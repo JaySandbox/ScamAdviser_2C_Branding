@@ -1,0 +1,2853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ScamAdviser — B2C Brand Exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #CC1417;
+    --signal-red: #EE3E41;
+    --ink: #1A1A1A;
+    --black: #0A0A0A;
+    --warm-grey: #EFEBE2;
+    --anti-flash: #EFEBE2;
+    --paper: #EFEBE2;
+    --warm-white: #FFFFF8;
+    --white: #FFFFF8;
+    --cream: #D9CFB8;
+    --plum: #6B3F5E;
+    --plum-light: rgba(107,63,94,0.12);
+    --gray: #404040;
+    --french-gray: #BABCC7;
+    --teal: #00A68D;
+    --orange: #FF8A00;
+    --warn-orange: #FF6712;
+    --safe-green: #00A67E;
+    --likely-safe: #63B100;
+    --trust-blue: #6B3F5E;
+    --trust-blue-light: rgba(107,63,94,0.12);
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--red); color: var(--white); }
+
+  .section { padding: 120px 48px; position: relative; }
+  .wrap { max-width: 1400px; margin: 0 auto; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .section-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+  }
+  .grain {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: var(--warm-grey);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 32px 48px 48px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .nav {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 10;
+    color: var(--ink);
+  }
+  .nav > div:not(.logo-mark) { opacity: 0.6; }
+  .logo-mark { display: flex; align-items: center; }
+  .logo-svg { display: block; height: 32px; width: auto; }
+  .logo-svg svg { height: 32px; width: auto; display: block; }
+  .hero-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 48px;
+    padding-top: 72px;
+  }
+  .hero-left { display: flex; flex-direction: column; gap: 36px; max-width: 1100px; }
+  .hero h1 .nw { white-space: nowrap; }
+
+  .hero-search {
+    background: #FFFFFF;
+    color: var(--ink);
+    border-radius: 22px;
+    padding: 20px 22px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 780px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .hero-search .hs-top {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 8px 4px;
+    min-height: 44px;
+    font-family: var(--sans);
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  .hero-search .hs-placeholder { color: rgba(0,0,0,0.42); }
+  .hero-search .hs-caret {
+    width: 2px; height: 22px;
+    background: var(--red);
+    animation: hs-blink 1s steps(2,start) infinite;
+    margin-left: 2px;
+  }
+  @keyframes hs-blink { 50% { opacity: 0; } }
+  .hero-search .hs-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .hero-search .hs-icons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .hero-search .hs-icon {
+    width: 36px; height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    color: rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .hero-search .hs-icon:hover { background: rgba(0,0,0,0.05); color: var(--ink); }
+  .hero-search .hs-icon svg { width: 18px; height: 18px; }
+  .hero-search .hs-divider {
+    width: 1px; height: 18px;
+    background: rgba(0,0,0,0.1);
+    margin: 0 4px;
+  }
+  .hero-search .hs-send {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+  }
+  .hero-search .hs-send:hover { transform: scale(1.06); background: #E03338; }
+  .hero-search .hs-send svg { width: 16px; height: 16px; }
+
+  .search-panel {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25), 0 2px 6px rgba(0,0,0,0.08);
+    overflow: hidden;
+    align-self: end;
+    width: 100%;
+    max-width: 520px;
+    justify-self: end;
+    font-family: var(--sans);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .sp-head {
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+  .sp-head .live { display: flex; align-items: center; gap: 8px; }
+  .sp-head .live .dot {
+    width: 6px; height: 6px; background: var(--signal-red);
+    border-radius: 50%; animation: pulse 1.6s infinite;
+  }
+  .sp-body { padding: 20px 20px 16px; display: flex; flex-direction: column; gap: 14px; max-height: 420px; overflow: hidden; }
+  .sp-msg { display: flex; gap: 10px; align-items: flex-start; }
+  .sp-msg .role {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .sp-msg.user .role { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
+  .sp-msg.bot .role { background: var(--red); color: var(--white); }
+  .sp-msg .text { font-size: 14px; line-height: 1.45; letter-spacing: -0.005em; }
+  .sp-msg.user .text { opacity: 0.85; }
+  .sp-msg .text .url { font-family: var(--mono); font-size: 12px; background: rgba(255,255,255,0.06); padding: 1px 6px; border-radius: 3px; word-break: break-all; }
+  .sp-verdict {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 14px;
+    background: rgba(238,62,65,0.08);
+    border: 1px solid rgba(238,62,65,0.25);
+    border-radius: 10px;
+    margin-top: 2px;
+  }
+  .sp-verdict .n {
+    font-size: 34px; font-weight: 900; color: var(--signal-red);
+    letter-spacing: -0.05em; line-height: 1; text-align: center;
+  }
+  .sp-verdict .lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55; }
+  .sp-verdict .v { font-size: 15px; font-weight: 700; letter-spacing: -0.015em; margin-top: 2px; color: var(--signal-red); }
+  .sp-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; padding-left: 48px; }
+  .sp-chip {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .sp-input {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+  }
+  .sp-input .caret { width: 2px; height: 14px; background: var(--signal-red); animation: blink 1s infinite; }
+  @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
+  .sp-input .ph { font-size: 13px; opacity: 0.5; flex: 1; }
+  .sp-input .send { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; }
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--signal-red);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-label .dot {
+    width: 8px; height: 8px; background: var(--signal-red);
+    border-radius: 50%;
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.5); }
+  }
+  .hero h1 {
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: clamp(64px, 13vw, 200px);
+    line-height: 0.88;
+    letter-spacing: -0.055em;
+    text-transform: lowercase;
+    color: var(--ink);
+  }
+  .hero h1 .slash {
+    color: var(--red);
+    display: inline-block;
+    transform: skewX(-10deg);
+    margin: 0 0.02em;
+  }
+  .hero h1 em {
+    font-style: normal;
+    position: relative;
+    display: inline-block;
+    color: var(--red);
+  }
+  .hero h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: 0.15em; left: 0; right: 0;
+    height: 0.12em;
+    background: var(--red);
+  }
+  .hero-sub {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(0,0,0,0.12);
+  }
+  .hero-sub p {
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 560px;
+    color: var(--ink);
+    opacity: 0.75;
+    font-weight: 400;
+  }
+  .hero-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    line-height: 1.9;
+    color: rgba(0,0,0,0.45);
+    text-transform: uppercase;
+  }
+  .hero-meta strong { color: var(--ink); font-weight: 600; }
+
+  .ticker {
+    position: absolute;
+    bottom: 48px; left: 0; right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(0,0,0,0.35);
+    padding: 12px 0;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    display: none;
+  }
+  .ticker-track {
+    display: inline-block;
+    animation: scroll 40s linear infinite;
+  }
+  .ticker-track span { margin-right: 48px; }
+  .ticker-track .scam { color: var(--signal-red); }
+  .ticker-track .safe { color: var(--teal); }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ============ PIVOT / ESSENCE ============ */
+  .essence {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .pivot-grid {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    align-items: stretch;
+    margin-top: 48px;
+    border: 1px solid var(--ink);
+  }
+  .pivot-col {
+    padding: 48px;
+    position: relative;
+  }
+  .pivot-col.old { background: var(--anti-flash); }
+  .pivot-col.new { background: var(--red); color: var(--white); }
+  .pivot-arrow {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--ink); color: white;
+    position: relative;
+  }
+  .pivot-arrow svg {
+    width: 22px; height: 22px;
+    stroke: currentColor;
+  }
+  .pivot-arrow .label {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, calc(-50% + 40px));
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    writing-mode: vertical-rl;
+    opacity: 0.5;
+  }
+  .pivot-col .tag { display: none; }
+  .pivot-col h3 {
+    font-size: 40px; font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  .pivot-col h3 .kind {
+    display: block;
+    font-size: 13px;
+    font-family: var(--mono);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .pivot-col.new h3 .kind { opacity: 0.85; }
+  .pivot-col p {
+    font-size: 15px; line-height: 1.55;
+    opacity: 0.8;
+  }
+  .pivot-col .quote {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid currentColor;
+    opacity: 1;
+  }
+  .pivot-col.new .quote { border-color: rgba(255,255,255,0.3); }
+
+  .essence h2 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    max-width: 1000px;
+    margin-bottom: 24px;
+  }
+  .essence h2 .red { color: var(--red); }
+  .essence-intro {
+    font-size: 18px;
+    max-width: 640px;
+    line-height: 1.5;
+    opacity: 0.7;
+  }
+
+  .pillars {
+    margin-top: 96px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink);
+    border-left: 1px solid var(--ink);
+  }
+  .pillar {
+    padding: 32px 24px;
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background: var(--paper);
+    transition: background 0.2s;
+  }
+  .pillar:hover { background: var(--anti-flash); }
+  .pillar .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    opacity: 0.4;
+  }
+  .pillar h4 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 16px 0 auto 0;
+  }
+  .pillar p {
+    font-size: 13px;
+    line-height: 1.45;
+    opacity: 0.7;
+    margin-top: 12px;
+  }
+  .pillar .accent {
+    width: 100%; height: 3px;
+    background: var(--ink);
+    margin-top: 16px;
+  }
+  .pillar:nth-child(1) .accent { background: var(--red); }
+  .pillar:nth-child(2) .accent { background: var(--trust-blue); }
+  .pillar:nth-child(3) .accent { background: var(--red); }
+  .pillar:nth-child(4) .accent { background: var(--teal); }
+  .pillar:nth-child(5) .accent { background: var(--trust-blue); }
+
+  /* ============ COLORS ============ */
+  .colors {
+    background: var(--white);
+    color: var(--ink);
+  }
+  .colors h2 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    max-width: 900px;
+  }
+  .colors h2 em {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .ratio-bar {
+    display: flex;
+    height: 160px;
+    margin-top: 64px;
+    border: 1px solid var(--ink);
+    overflow: hidden;
+  }
+  .ratio-seg {
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .ratio-seg.anti { background: var(--anti-flash); flex: 6; }
+  .ratio-seg.red { background: var(--red); color: var(--white); flex: 3; }
+  .ratio-seg.blue { background: var(--trust-blue); color: var(--white); flex: 1; }
+  .ratio-seg .label-num {
+    font-size: 48px;
+    font-weight: 800;
+    font-family: var(--sans);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-right: 12px;
+  }
+  .ratio-seg .label-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.4;
+  }
+  .ratio-seg .label-stack span:last-child { opacity: 0.6; text-transform: none; letter-spacing: 0; font-family: var(--sans); font-size: 13px; }
+
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: 64px;
+    border-top: 1px solid var(--ink);
+    border-left: 1px solid var(--ink);
+  }
+  .swatch {
+    aspect-ratio: 1 / 1.2;
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+  .swatch .name { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+  .swatch .hex { font-size: 11px; letter-spacing: 0.05em; opacity: 0.7; }
+  .swatch .role { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; }
+
+  .risk-ladder {
+    margin-top: 96px;
+    border: 1px solid var(--ink);
+  }
+  .risk-ladder h3 {
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--ink);
+    font-size: 14px;
+    font-family: var(--mono);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+  }
+  .risk-ladder h3 .meta { opacity: 0.5; }
+  .ladder-row {
+    display: grid;
+    grid-template-columns: 60px 200px 1fr 120px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    align-items: center;
+  }
+  .ladder-row:last-child { border-bottom: 0; }
+  .ladder-score {
+    padding: 20px;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    color: var(--white);
+  }
+  .ladder-label {
+    padding: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+  }
+  .ladder-example {
+    padding: 20px;
+    font-family: var(--mono);
+    font-size: 13px;
+    opacity: 0.7;
+  }
+  .ladder-action {
+    padding: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: right;
+    opacity: 0.6;
+  }
+
+  /* ============ TYPE ============ */
+  .type-section {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .type-specimen {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .type-sample .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.45;
+    margin-bottom: 12px;
+  }
+  .type-display {
+    font-weight: 900;
+    font-size: 220px;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+    color: var(--ink);
+  }
+  .type-display .outline {
+    -webkit-text-stroke: 2px var(--red);
+    color: transparent;
+  }
+  .type-weights {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 48px;
+    border-top: 1px solid rgba(0,0,0,0.12);
+    padding-top: 32px;
+  }
+  .type-weight-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: baseline;
+    gap: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  .type-weight-row:last-child { border-bottom: 0; }
+  .type-weight-row .w-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    opacity: 0.45;
+  }
+  .type-weight-row .w-text {
+    font-size: 28px;
+    letter-spacing: -0.02em;
+  }
+  .w-300 { font-weight: 300; }
+  .w-400 { font-weight: 400; }
+  .w-500 { font-weight: 500; }
+  .w-700 { font-weight: 700; }
+  .w-900 { font-weight: 900; }
+
+  .hierarchy {
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .h-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    align-items: baseline;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    gap: 24px;
+  }
+  .h-row .spec {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    line-height: 1.6;
+  }
+  .h-headline { font-size: 44px; font-weight: 800; letter-spacing: -0.035em; line-height: 1; }
+  .h-subhead { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+  .h-body { font-size: 16px; font-weight: 400; line-height: 1.5; }
+  .h-mono { font-family: var(--mono); font-size: 14px; letter-spacing: 0.02em; color: var(--signal-red); }
+
+  /* ============ VOICE ============ */
+  .voice {
+    background: var(--anti-flash);
+  }
+  .voice h2 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    max-width: 900px;
+  }
+  .tone-table {
+    margin-top: 64px;
+    border: 1px solid var(--ink);
+    background: var(--white);
+  }
+  .tone-head {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    background: var(--red);
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .tone-head > div { padding: 18px 24px; border-right: 1px solid rgba(255,255,255,0.2); }
+  .tone-head > div:last-child { border-right: 0; }
+  .tone-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    min-height: 120px;
+  }
+  .tone-row:last-child { border-bottom: 0; }
+  .tone-row > div { padding: 24px; border-right: 1px solid rgba(0,0,0,0.12); display: flex; flex-direction: column; justify-content: center; }
+  .tone-row > div:last-child { border-right: 0; }
+  .tone-row .scenario {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--paper);
+  }
+  .tone-row .b2b {
+    color: var(--gray);
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 400;
+    position: relative;
+  }
+  .tone-row .b2b::before {
+    content: 'B2B';
+    position: absolute;
+    top: 8px; left: 24px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    opacity: 0.3;
+  }
+  .tone-row .b2c {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    position: relative;
+  }
+  .tone-row .b2c::before {
+    content: 'B2C';
+    position: absolute;
+    top: 8px; left: 24px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    font-weight: 500;
+  }
+
+  .dos-donts {
+    margin-top: 96px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--ink);
+  }
+  .dodo {
+    padding: 40px;
+  }
+  .dodo.do { background: var(--white); border-right: 1px solid var(--ink); }
+  .dodo.dont { background: var(--white); color: var(--ink); border-left: 3px solid var(--signal-red); }
+  .dodo h4 {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .dodo.do h4::before { content: '✓'; color: var(--trust-blue); font-size: 16px; }
+  .dodo.dont h4::before { content: '×'; color: var(--signal-red); font-size: 20px; }
+  .dodo ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .dodo li { font-size: 16px; line-height: 1.4; padding-left: 20px; position: relative; }
+  .dodo li::before {
+    content: '—';
+    position: absolute; left: 0;
+    opacity: 0.4;
+  }
+  .dodo li em {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    padding: 1px 6px;
+    background: var(--anti-flash);
+    color: var(--ink);
+    border-radius: 2px;
+  }
+  .dodo.dont li em { background: rgba(238,62,65,0.08); color: var(--signal-red); }
+
+  /* ============ MOODBOARD ============ */
+  .moodboard {
+    background: var(--paper);
+  }
+  .moodboard h2 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+  .mood-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 160px;
+    gap: 16px;
+    margin-top: 64px;
+  }
+  .mood-cell {
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .mood-cell .caption { opacity: 0.9; z-index: 2; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
+  .mood-cell .tag {
+    align-self: flex-start;
+    padding: 4px 8px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 9px;
+    z-index: 2;
+    border-radius: 3px;
+  }
+
+  .mc-1 { grid-column: span 5; grid-row: span 2;
+    background: url('project/assets/moodboard/01_warm_morning_light.png') center/cover no-repeat;
+    color: var(--white);
+  }
+  .mc-2 { grid-column: span 4;
+    background: url('project/assets/moodboard/02_abstract_caution_texture.png') center/cover no-repeat;
+    color: var(--white);
+  }
+
+  .mc-3 { grid-column: span 3;
+    background: url('project/assets/moodboard/03_candid_phone_scroll.png') center/cover no-repeat;
+    color: var(--white);
+  }
+
+  .mc-4 { grid-column: span 3;
+    background: url('project/assets/moodboard/04_digital_threat_abstract.png') center/cover no-repeat;
+    color: var(--white);
+  }
+
+  .mc-5 { grid-column: span 5;
+    background: url('project/assets/moodboard/05_peer_trust_community.png') center/cover no-repeat;
+    color: var(--white);
+  }
+
+  .mc-6 { grid-column: span 4;
+    background: url('project/assets/moodboard/06_gradient_silhouette.png') center/cover no-repeat;
+    color: var(--white);
+  }
+
+  .mc-7 { grid-column: span 4;
+    background: url('project/assets/moodboard/07_messy_desk_real.png') center/cover no-repeat;
+    color: var(--white);
+  }
+
+  .mc-8 { grid-column: span 4;
+    background: url('project/assets/moodboard/08_shield_abstract.png') center/cover no-repeat;
+    color: var(--ink);
+    position: relative;
+  }
+  .mc-8 .pattern::after {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 64%; height: 64%;
+    background: var(--red);
+    mix-blend-mode: multiply;
+  }
+
+  .photo-direction {
+    margin-top: 96px;
+    border-top: 1px solid var(--ink);
+    padding-top: 48px;
+  }
+  .photo-heads {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+  }
+  .photo-heads h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+  }
+  .photo-heads .yes h4 { color: var(--trust-blue); }
+  .photo-heads .no h4 { color: var(--signal-red); }
+  .photo-heads ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .photo-heads li { font-size: 15px; line-height: 1.5; }
+  .photo-heads li::before { content: '— '; opacity: 0.5; }
+
+  /* ============ UI EXPLORATION ============ */
+  .ui-section {
+    background: var(--white);
+    color: var(--ink);
+    overflow: hidden;
+  }
+  .ui-section h2 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+  .ui-section .ui-intro {
+    font-size: 18px; opacity: 0.6; max-width: 640px;
+    line-height: 1.5;
+    margin-top: 20px;
+  }
+  .ui-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: auto;
+    gap: 32px;
+    margin-top: 80px;
+  }
+  .ui-card {
+    background: var(--anti-flash);
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 48px;
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+  }
+  .ui-card.dark { background: var(--anti-flash); color: var(--ink); border-top: 3px solid var(--red); }
+  .ui-card h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .ui-card .title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    line-height: 1.1;
+  }
+  .ui-card .stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  .ui-ext { grid-column: span 5; }
+  .ext-popup {
+    width: 100%;
+    max-width: 340px;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 14px;
+    overflow: hidden;
+    font-family: var(--sans);
+  }
+  .ext-header {
+    background: var(--signal-red);
+    color: white;
+    padding: 20px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ext-header .ext-brand {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .ext-header .ext-brand .d { width: 6px; height: 6px; background: white; border-radius: 50%; animation: pulse 1.2s infinite; }
+  .ext-header h5 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .ext-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 14px; }
+  .ext-url {
+    font-family: var(--mono);
+    font-size: 11px;
+    background: var(--paper);
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: var(--ink);
+    word-break: break-all;
+    position: relative;
+  }
+  .ext-url .strike {
+    text-decoration: line-through;
+    text-decoration-color: var(--signal-red);
+    text-decoration-thickness: 2px;
+  }
+  .ext-score {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px;
+    background: rgba(238,62,65,0.06);
+    border: 1px solid rgba(238,62,65,0.2);
+    border-radius: 8px;
+  }
+  .ext-score .num {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--signal-red);
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+  .ext-score .info { flex: 1; }
+  .ext-score .info .label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 2px;
+  }
+  .ext-score .info .verdict {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--signal-red);
+    letter-spacing: -0.01em;
+  }
+  .ext-reasons { display: flex; flex-direction: column; gap: 8px; }
+  .ext-reasons .reason {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+  .ext-reasons .reason .dot {
+    width: 6px; height: 6px; background: var(--signal-red);
+    border-radius: 50%;
+    flex-shrink: 0; margin-top: 5px;
+  }
+  .ext-actions { display: flex; gap: 8px; margin-top: 4px; }
+  .ext-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: -0.01em;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--sans);
+  }
+  .ext-btn.primary { background: var(--ink); color: white; }
+  .ext-btn.secondary { background: var(--paper); color: var(--ink); }
+
+  .ui-phone { grid-column: span 4; }
+  .phone-frame {
+    width: 280px;
+    height: 560px;
+    background: var(--ink);
+    border-radius: 38px;
+    padding: 10px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    position: relative;
+  }
+  .phone-screen {
+    width: 100%; height: 100%;
+    background: var(--paper);
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .phone-screen::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 50%;
+    transform: translateX(-50%);
+    width: 88px; height: 22px;
+    background: var(--ink);
+    border-radius: 12px;
+    z-index: 10;
+  }
+  .phone-status {
+    padding: 14px 20px 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    color: var(--ink);
+  }
+  .phone-status .right { display: flex; gap: 4px; }
+  .phone-content {
+    flex: 1;
+    padding: 40px 18px 16px;
+    overflow-y: auto;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .phone-h1 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .phone-h1 .lc { text-transform: lowercase; }
+  .phone-caption {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+  .phone-check-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 14px;
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .score-badge {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 15px;
+    color: white;
+    letter-spacing: -0.04em;
+  }
+  .score-badge.danger { background: var(--signal-red); }
+  .score-badge.warn { background: var(--orange); }
+  .score-badge.safe { background: var(--safe-green); }
+  .score-badge.likely { background: var(--likely-safe); }
+  .phone-check-card .info .site {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .phone-check-card .info .when {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+  .phone-check-card .tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    padding: 4px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .tag.dd { background: rgba(238,62,65,0.1); color: var(--signal-red); }
+  .tag.ww { background: rgba(255,138,0,0.12); color: var(--warn-orange); }
+  .tag.ss { background: rgba(0,166,126,0.12); color: var(--safe-green); }
+  .tag.ll { background: rgba(99,177,0,0.12); color: var(--likely-safe); }
+
+  .phone-cta {
+    margin-top: 8px;
+    background: var(--ink);
+    color: white;
+    padding: 14px 16px;
+    border-radius: 14px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .phone-cta .arrow { font-size: 18px; }
+  .phone-community {
+    margin-top: 4px;
+    background: var(--trust-blue);
+    color: white;
+    padding: 14px;
+    border-radius: 14px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .phone-community .tiny {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .phone-community .big-txt {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+  .phone-tab {
+    position: absolute;
+    bottom: 10px; left: 10px; right: 10px;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 10px 18px;
+    display: flex; justify-content: space-between;
+    box-shadow: 0 -1px 2px rgba(0,0,0,0.04);
+  }
+  .phone-tab .t { font-size: 10px; opacity: 0.4; font-weight: 600; }
+  .phone-tab .t.active { opacity: 1; color: var(--red); }
+
+  .ui-score { grid-column: span 7; }
+  .score-card {
+    width: 100%;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+  .score-left .domain {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    background: var(--paper);
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .score-left h6 {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 4px;
+  }
+  .score-big {
+    font-size: 120px;
+    font-weight: 900;
+    letter-spacing: -0.065em;
+    line-height: 0.85;
+    color: var(--signal-red);
+  }
+  .score-big .denom {
+    font-size: 32px;
+    color: var(--gray);
+    opacity: 0.5;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+  .score-verdict {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 14px 0 12px;
+  }
+  .score-verdict .pill {
+    display: inline-block;
+    padding: 3px 10px 4px;
+    background: var(--signal-red);
+    color: white;
+    border-radius: 999px;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+  .score-left p {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.75;
+    margin-bottom: 20px;
+    max-width: 320px;
+  }
+  .score-actions { display: flex; gap: 8px; }
+  .score-actions button {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--sans);
+  }
+  .score-actions .p { background: var(--ink); color: white; }
+  .score-actions .s { background: var(--paper); color: var(--ink); }
+
+  .score-right h6 {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .factor-list { display: flex; flex-direction: column; gap: 14px; }
+  .factor {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    gap: 12px;
+    align-items: flex-start;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .factor:last-child { border-bottom: 0; padding-bottom: 0; }
+  .factor .icon {
+    width: 18px; height: 18px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800;
+    color: white;
+    margin-top: 2px;
+  }
+  .factor .icon.bad { background: var(--signal-red); }
+  .factor .icon.warn { background: var(--orange); }
+  .factor .icon.good { background: var(--safe-green); }
+  .factor .txt .t { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+  .factor .txt .d { font-size: 12px; opacity: 0.7; line-height: 1.4; margin-top: 2px; }
+  .factor .val {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gray);
+    white-space: nowrap;
+  }
+
+  .ui-social { grid-column: span 4; }
+  .social-card {
+    width: 270px; height: 480px;
+    background: var(--signal-red);
+    color: var(--white);
+    border-radius: 18px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(238,62,65,0.4);
+  }
+  .social-card::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .social-header {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .social-body {
+    z-index: 2;
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    text-transform: none;
+  }
+  .social-body em {
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 2px;
+  }
+  .social-foot { z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; }
+  .social-foot .counter {
+    font-family: var(--sans);
+    font-size: 60px;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 0.85;
+  }
+  .social-foot .label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    max-width: 90px;
+    line-height: 1.3;
+  }
+
+  .ui-community { grid-column: span 8; }
+  .comm-card {
+    width: 100%;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 32px;
+    min-height: 380px;
+  }
+  .comm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .comm-header h5 {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .comm-header .stat {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+  }
+  .comm-header .stat strong {
+    color: var(--trust-blue);
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .reports { display: flex; flex-direction: column; gap: 14px; }
+  .report {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    align-items: flex-start;
+  }
+  .report:last-child { border-bottom: 0; }
+  .avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: -0.02em;
+  }
+  .av-1 { background: #317BB8; }
+  .av-2 { background: #1A5A9C; }
+  .av-3 { background: #CC1417; }
+  .av-4 { background: #4D96D4; }
+  .report .content { min-width: 0; }
+  .report .who {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .report .who .flair {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--trust-blue);
+    background: var(--trust-blue-light);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+  }
+  .report .msg {
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-top: 2px;
+  }
+  .report .meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    color: var(--gray);
+    margin-top: 4px;
+    display: flex; gap: 10px;
+  }
+  .report .verdict {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .verdict.scam { background: rgba(238,62,65,0.1); color: var(--signal-red); }
+  .verdict.legit { background: rgba(0,166,126,0.1); color: var(--safe-green); }
+
+  .ui-safe { grid-column: span 4; }
+  .safe-card {
+    width: 100%;
+    background: var(--safe-green);
+    color: white;
+    border-radius: 14px;
+    padding: 32px 28px;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .safe-card::before {
+    content: '✓';
+    position: absolute;
+    font-size: 280px;
+    line-height: 1;
+    right: -40px; bottom: -100px;
+    opacity: 0.12;
+    font-weight: 900;
+  }
+  .safe-card .top {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .safe-card h5 {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+  }
+  .safe-card .domain-c {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: rgba(255,255,255,0.15);
+    padding: 8px 12px;
+    border-radius: 6px;
+    align-self: flex-start;
+  }
+  .safe-card .score-line {
+    display: flex; align-items: baseline; gap: 6px;
+  }
+  .safe-card .score-line .n {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: -0.065em;
+    line-height: 0.85;
+  }
+  .safe-card .score-line .d { font-family: var(--mono); font-size: 14px; opacity: 0.6; }
+
+  /* ============ CLOSE ============ */
+  .close {
+    background: var(--anti-flash);
+    color: var(--ink);
+    padding: 140px 48px 48px;
+    text-align: center;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  .close h2 {
+    font-size: clamp(48px, 10vw, 140px);
+    font-weight: 900;
+    letter-spacing: -0.055em;
+    line-height: 0.88;
+    text-transform: lowercase;
+  }
+  .close h2 .red { color: var(--red); font-style: italic; }
+  .close p {
+    max-width: 600px; margin: 32px auto 0;
+    font-size: 18px;
+    line-height: 1.5;
+    opacity: 0.6;
+  }
+  .close-foot {
+    margin-top: 120px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0,0,0,0.12);
+    display: flex; justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  /* ============ STICKY MINI-NAV ============ */
+  .mini-nav {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 999px;
+    padding: 10px 6px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.06);
+  }
+  .mini-nav a {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    opacity: 0.35;
+    transition: opacity 0.18s, transform 0.18s, background 0.18s;
+    position: relative;
+  }
+  .mini-nav a:hover {
+    opacity: 1;
+    transform: scale(1.22);
+    background: rgba(0,0,0,0.06);
+  }
+  .mini-nav a.active {
+    opacity: 1;
+    background: var(--red);
+    color: #fff;
+  }
+  .mini-nav a::before {
+    content: attr(data-label);
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--ink);
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 4px 8px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+  }
+  .mini-nav a:hover::before { opacity: 1; }
+
+  /* ============ LOGO USAGE ============ */
+  .logo-usage { background: var(--white); color: var(--ink); }
+  .logo-usage h2 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    max-width: 900px;
+  }
+  .logo-usage h2 em { font-style: italic; font-weight: 300; }
+  .logo-usage .intro { font-size: 18px; opacity: 0.65; max-width: 640px; margin-top: 16px; line-height: 1.5; }
+  .lockup-grid {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--ink);
+    border-left: 1px solid var(--ink);
+  }
+  .lockup {
+    aspect-ratio: 4 / 3;
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .lockup .lk-caption {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .lockup .lk-name {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .lockup .lk-stage { flex: 1; display: flex; align-items: center; justify-content: center; padding: 16px 0; }
+  .lockup.light { background: var(--anti-flash); }
+  .lockup.paper { background: var(--paper); }
+  .lockup.dark { background: var(--ink); color: var(--white); }
+  .lockup.red { background: var(--red); color: var(--white); }
+  .lockup.wrong { background: var(--white); position: relative; }
+  .lockup.wrong::after {
+    content: '×';
+    position: absolute;
+    top: 16px; right: 20px;
+    font-size: 28px;
+    color: var(--signal-red);
+    font-weight: 900;
+    line-height: 1;
+  }
+  .lockup .mark-box {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: -0.055em;
+    line-height: 1;
+    text-transform: lowercase;
+  }
+  .lockup .mark-box .slash { color: var(--red); display: inline-block; transform: skewX(-10deg); margin: 0 0.02em; }
+  .lockup.red .mark-box .slash, .lockup.dark .mark-box .slash { color: var(--white); }
+  .lockup .mark-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-top: 8px;
+  }
+  .clear-space {
+    margin-top: 96px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .clear-space .demo {
+    aspect-ratio: 5 / 3;
+    background: var(--anti-flash);
+    border: 1px solid var(--ink);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .clear-space .demo-inner {
+    border: 1px dashed var(--red);
+    padding: 40px 56px;
+    position: relative;
+  }
+  .clear-space .demo-inner::before,
+  .clear-space .demo-inner::after {
+    content: 'x';
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--red);
+  }
+  .clear-space .demo-inner::before { top: -18px; left: -10px; }
+  .clear-space .demo-inner::after { bottom: -18px; right: -10px; }
+  .clear-space .demo .mark {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -0.055em;
+    text-transform: lowercase;
+  }
+  .clear-space .demo .mark .slash { color: var(--red); display: inline-block; transform: skewX(-10deg); margin: 0 0.02em; }
+  .cs-copy .spec {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+  .cs-copy h4 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .cs-copy p { font-size: 15px; line-height: 1.55; opacity: 0.75; }
+  .cs-copy ul { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .cs-copy li { font-size: 14px; line-height: 1.45; padding-left: 18px; position: relative; }
+  .cs-copy li::before { content: '—'; position: absolute; left: 0; opacity: 0.4; }
+
+  /* ============ TAGLINE SYSTEM ============ */
+  .taglines { background: var(--ink); color: var(--white); }
+  .taglines .section-label { color: rgba(255,255,255,0.7); }
+  .taglines h2 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    max-width: 1000px;
+  }
+  .taglines h2 em { font-style: italic; font-weight: 300; color: var(--french-gray); }
+  .taglines .intro { font-size: 18px; opacity: 0.55; max-width: 640px; margin-top: 16px; line-height: 1.5; }
+  .tagline-grid {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .tagline-main {
+    padding: 48px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    background: var(--red);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 360px;
+  }
+  .tagline-main .spec { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.8; }
+  .tagline-main .big {
+    font-size: clamp(44px, 6vw, 88px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    text-transform: lowercase;
+  }
+  .tagline-main .big .slash { color: var(--ink); display: inline-block; transform: skewX(-10deg); margin: 0 0.02em; }
+  .tagline-main .note { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; opacity: 0.75; line-height: 1.5; max-width: 320px; }
+  .tagline-list { display: flex; flex-direction: column; }
+  .tag-row {
+    padding: 28px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+  .tag-row:last-child { border-bottom: 0; }
+  .tag-row .ctx { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.5; }
+  .tag-row .line {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .tag-row .line em { font-style: italic; font-weight: 400; color: var(--french-gray); }
+
+  /* Color tier headers */
+  .tier-head {
+    display: flex; align-items: baseline; gap: 16px;
+    margin: 80px 0 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .tier-head .n {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .tier-head h3 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .tier-head .note {
+    font-size: 13px;
+    opacity: 0.6;
+    margin-left: auto;
+    max-width: 360px;
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    .mini-nav { display: none; }
+.lockup-grid { grid-template-columns: repeat(2, 1fr); }
+    .clear-space { grid-template-columns: 1fr; }
+    .tagline-grid { grid-template-columns: 1fr; }
+    .tagline-main { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.15); min-height: 260px; }
+    .section { padding: 80px 24px; }
+    .hero { padding: 24px 24px 32px; }
+    .hero-sub { grid-template-columns: 1fr; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .search-panel { justify-self: stretch; max-width: 100%; }
+    .pillars { grid-template-columns: repeat(2, 1fr); }
+    .color-grid { grid-template-columns: repeat(3, 1fr); }
+    .pivot-grid { grid-template-columns: 1fr; }
+    .pivot-arrow { display: none; }
+    .mood-grid { grid-template-columns: repeat(4, 1fr); }
+    .mc-1, .mc-2, .mc-3, .mc-4, .mc-5, .mc-6, .mc-7, .mc-8 { grid-column: span 4; }
+    .ratio-seg { padding: 10px; }
+    .ratio-seg .label-num { font-size: 24px; }
+    .ratio-seg .label-stack span:last-child { font-size: 10px; }
+    .type-specimen { grid-template-columns: 1fr; }
+    .type-display { font-size: 120px; }
+    .ui-grid { grid-template-columns: 1fr; }
+    .ui-ext, .ui-phone, .ui-score, .ui-social, .ui-community, .ui-safe { grid-column: 1 / -1; }
+    .score-card { grid-template-columns: 1fr; }
+    .dos-donts { grid-template-columns: 1fr; }
+    .ladder-row { grid-template-columns: 50px 1fr 80px; }
+    .ladder-example { display: none; }
+    .tone-head, .tone-row { grid-template-columns: 100px 1fr 1fr; }
+    .photo-heads { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Sticky mini-nav -->
+  <nav class="mini-nav" aria-label="Section navigation">
+    <a href="#hero"     data-section="hero"     data-label="00 · Hero">00</a>
+    <a href="#essence"  data-section="essence"  data-label="01 · The Shift">01</a>
+    <a href="#logo"     data-section="logo"     data-label="02 · Logo">02</a>
+    <a href="#colors"   data-section="colors"   data-label="03 · Color">03</a>
+    <a href="#type"     data-section="type"     data-label="04 · Type">04</a>
+    <a href="#voice"    data-section="voice"    data-label="05 · Voice">05</a>
+    <a href="#mood"     data-section="mood"     data-label="06 · Mood">06</a>
+    <a href="#ui"       data-section="ui"       data-label="07 · UI">07</a>
+    <a href="#taglines" data-section="taglines" data-label="08 · Taglines">08</a>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="grain"></div>
+    <div class="nav">
+      <div class="logo-mark"><div class="logo-svg"><img src="project/assets/sa-logo.png" alt="ScamAdviser" style="height:28px;width:auto;display:block;"></div></div>
+      <div>Brand Exploration · B2C Pivot · Rev. 04.2026</div>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-label">
+          <span class="dot"></span>
+          Live — 312 suspicious domains flagged in the last hour
+        </div>
+        <h1>your digital<br/><span class="nw"><em>BS</em><span class="slash">/</span>detector.</span></h1>
+        <div class="hero-sub">
+          <p>We catch what you'd miss so you can vibe online without the friction of getting scammed. Built by humans, sharpened by AI, powered by millions of reports from people who've been burned before — so you don't have to be.</p>
+          <div class="hero-meta">
+            <strong>Mission</strong> — peer-powered scam detection<br/>
+            <strong>Audience</strong> — consumers. Gen Z forward.<br/>
+            <strong>Vibe</strong> — straight-up · empowering · sharp · real<br/>
+            <strong>Stance</strong> — anti-corporate · anti-fearmongering
+          </div>
+        </div>
+
+        <div class="hero-search" role="search" aria-label="ScamAdviser search">
+          <div class="hs-top">
+            <span class="hs-placeholder">Paste a link, forward a text, or describe the situation…</span>
+            <span class="hs-caret"></span>
+          </div>
+          <div class="hs-bottom">
+            <div class="hs-icons">
+              <button type="button" aria-label="Attach" class="hs-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+              </button>
+              <button type="button" aria-label="Scan URL" class="hs-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </button>
+              <span class="hs-divider"></span>
+              <button type="button" aria-label="Image scan" class="hs-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              </button>
+              <button type="button" aria-label="Settings" class="hs-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </button>
+            </div>
+            <button type="button" aria-label="Ask ScamAdviser" class="hs-send">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PIVOT / ESSENCE ============ -->
+  <section class="section essence" id="essence">
+    <div class="wrap">
+      <div class="section-label">01 — The Shift</div>
+      <h2>From institutional authority to<br/>the friend who <span class="red">FaceTimes you</span> first.</h2>
+      <p class="essence-intro">The B2B ScamAdviser sold confidence to platforms. The B2C ScamAdviser sits in your group chat, calls out the sketchy DMs, and forwards the receipts. Same data. Totally different attitude.</p>
+
+      <div class="pivot-grid">
+        <div class="pivot-col old">
+          <h3><span class="kind">Was · B2B Authority</span>The Advisor.</h3>
+          <p>Corporate language. Institutional trust signals. "Reliable algorithms." "Comprehensive analysis." Badge of approval from a company you've never heard of.</p>
+          <div class="quote">"Your anti-scam partner."</div>
+        </div>
+        <div class="pivot-arrow" aria-label="Pivot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <span class="label">PIVOT</span>
+        </div>
+        <div class="pivot-col new">
+          <h3><span class="kind">Now · B2C Ally</span>The Detector.</h3>
+          <p>Person in the group chat energy. Zero buzzwords. Plain-talk warnings with receipts. Peer trust over institutional badges. Fast, sharp, and done explaining.</p>
+          <div class="quote">"Your digital BS detector."</div>
+        </div>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="num">01</div>
+          <h4>Straight-up</h4>
+          <p>If it looks like a rug pull, we call it a rug pull. No corporate hedge.</p>
+          <div class="accent"></div>
+        </div>
+        <div class="pillar">
+          <div class="num">02</div>
+          <h4>Empowering</h4>
+          <p>We hand you the receipts. You make the call.</p>
+          <div class="accent"></div>
+        </div>
+        <div class="pillar">
+          <div class="num">03</div>
+          <h4>Sharp</h4>
+          <p>AI that moves faster than the newest phishing drop.</p>
+          <div class="accent"></div>
+        </div>
+        <div class="pillar">
+          <div class="num">04</div>
+          <h4>Real</h4>
+          <p>Sounds like a person, not a 90-page PDF.</p>
+          <div class="accent"></div>
+        </div>
+        <div class="pillar">
+          <div class="num">05</div>
+          <h4>Peer-powered</h4>
+          <p>Millions of users. Institutions can't keep up with that.</p>
+          <div class="accent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOGO USAGE ============ -->
+  <section class="section logo-usage" id="logo">
+    <div class="wrap">
+      <div class="section-label">02 — Logo & Lockup</div>
+      <h2>One mark. <em>Eight contexts.</em></h2>
+      <p class="intro">The slash is the signal — it cuts through the word the way we cut through the noise. Keep it sharp, keep it off the clutter, and never rebuild it.</p>
+
+      <div class="lockup-grid">
+        <div class="lockup light">
+          <div class="lk-caption">Primary · light</div>
+          <div class="lk-stage"><div class="mark-box">bs<span class="slash">/</span>d</div></div>
+          <div class="lk-name">Anti-flash background</div>
+        </div>
+        <div class="lockup red">
+          <div class="lk-caption">Alert · red state</div>
+          <div class="lk-stage"><div class="mark-box">bs<span class="slash">/</span>d</div></div>
+          <div class="lk-name">Danger + warnings only</div>
+        </div>
+        <div class="lockup dark">
+          <div class="lk-caption">Reverse · dark</div>
+          <div class="lk-stage"><div class="mark-box">bs<span class="slash">/</span>d</div></div>
+          <div class="lk-name">Editorial + video chrome</div>
+        </div>
+        <div class="lockup paper">
+          <div class="lk-caption">Wordmark · full</div>
+          <div class="lk-stage"><div style="text-align:center; display:flex; flex-direction:column; align-items:center; gap:14px;"><img src="project/assets/sa-logo.png" alt="ScamAdviser" style="height:48px; width:auto; display:block;"><div class="mark-sub">digital bs detector</div></div></div>
+          <div class="lk-name">Full lockup · press + footer</div>
+        </div>
+        <div class="lockup light">
+          <div class="lk-caption">Favicon · 16–1024px</div>
+          <div class="lk-stage"><div style="width:72px;height:72px;background:var(--red);border-radius:12px;display:flex;align-items:center;justify-content:center;"><span style="font-size:44px;font-weight:900;color:#fff;transform:skewX(-10deg);line-height:1;">/</span></div></div>
+          <div class="lk-name">App icon + tab favicon</div>
+        </div>
+        <div class="lockup wrong">
+          <div class="lk-caption" style="color:var(--signal-red);">Do not · gradient fills</div>
+          <div class="lk-stage"><div class="mark-box" style="background:linear-gradient(135deg,#ff6712,#cc1417);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">bs<span class="slash" style="background:none;-webkit-text-fill-color:#1A1A1A;color:#1A1A1A;">/</span>d</div></div>
+          <div class="lk-name">No gradients — ever.</div>
+        </div>
+      </div>
+
+      <div class="clear-space">
+        <div class="demo">
+          <div class="demo-inner">
+            <div class="mark">bs<span class="slash">/</span>d</div>
+          </div>
+        </div>
+        <div class="cs-copy">
+          <div class="spec">Clear space + minimums</div>
+          <h4>Give the slash room to cut.</h4>
+          <p>Minimum clear space around the mark equals the cap-height of the slash ("x"). Nothing crops into that frame — not type, not photography, not a background texture.</p>
+          <ul>
+            <li>Digital min: 24px mark height</li>
+            <li>Print min: 8mm mark height</li>
+            <li>Never rotate or skew beyond the built-in 10° of the slash</li>
+            <li>Never fill the slash with brand red on a red background</li>
+            <li>Never add a shadow, outline, or container around the mark</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLORS ============ -->
+  <section class="section colors" id="colors">
+    <div class="wrap">
+      <div class="section-label">03 — Color System</div>
+      <h2>Warm grey <em>breathes</em>. Red <em>signals</em>. Ink <em>anchors</em>.</h2>
+      <p class="essence-intro" style="margin-top:16px;">Two tiers. Primary carries the brand across every surface. Secondary is for editorial and community moments only — and stays out of the risk ladder's lane.</p>
+
+      <!-- Primary tier -->
+      <div class="tier-head">
+        <span class="n">Tier 01</span>
+        <h3>Primary Color</h3>
+        <span class="note">Every surface, every touchpoint. The 60 / 20 / 10 / 10 applies here.</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(0,0,0,0.12); margin-top: 32px; overflow: hidden;">
+        <div style="background: #FFFFF8; color: #0A0A0A; padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(0,0,0,0.08);">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); font-weight: 600;">10% · Surface</div>
+          <div>
+            <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px;">Warm White</div>
+            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.55; margin-bottom: 10px;">#FFFFF8</div>
+            <div style="font-size: 12px; line-height: 1.5; opacity: 0.6;">Cards · modals · overlays. Reads as white — barely-there warmth.</div>
+          </div>
+        </div>
+        <div style="background: #EFEBE2; color: #0A0A0A; padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(0,0,0,0.1);">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); font-weight: 600;">60% · Canvas</div>
+          <div>
+            <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px;">Warm Grey</div>
+            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.55; margin-bottom: 10px;">#EFEBE2</div>
+            <div style="font-size: 12px; line-height: 1.5; opacity: 0.6;">Page bg · section surfaces · breathing room. Never fill CTAs or alerts.</div>
+          </div>
+        </div>
+        <div style="background: #CC1417; color: #fff; padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,0.15);">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); font-weight: 600;">20% · Focus</div>
+          <div>
+            <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px;">ScamAdviser Red</div>
+            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.65; margin-bottom: 10px;">#CC1417</div>
+            <div style="font-size: 12px; line-height: 1.5; opacity: 0.8;">CTAs · alerts · brand hero moments. One red family only — no tints.</div>
+          </div>
+        </div>
+        <div style="background: #1A1A1A; color: #fff; padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 600;">10% · Anchor</div>
+          <div>
+            <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px;">Ink Black</div>
+            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.55; margin-bottom: 10px;">#1A1A1A</div>
+            <div style="font-size: 12px; line-height: 1.5; opacity: 0.65;">Body text · borders · dark UI · structural weight.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary tier -->
+      <div class="tier-head">
+        <span class="n">Tier 02</span>
+        <h3>Secondary Color</h3>
+        <span class="note">Long-form reading, peer content, press. Never used for risk states. Pick one direction.</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--ink);">
+        <div style="border-right: 1px solid var(--ink); border-top: 3px solid #4A5568; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5;">Option A · Slate</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="height: 56px; background: #4A5568; border-radius: 4px;"></div>
+            <div style="height: 32px; background: #718096; border-radius: 4px;"></div>
+            <div style="height: 20px; background: rgba(74,85,104,0.15); border-radius: 4px;"></div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">#4A5568 · Slate</div>
+            <div style="font-size: 12px; opacity: 0.6; margin-top: 4px; line-height: 1.4;">Cool, editorial, credible. Works well for community badges and data labels. No risk-state confusion.</div>
+          </div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--red); margin-top: auto;">Good for: data, editorial</div>
+        </div>
+        <div style="border-right: 1px solid var(--ink); border-top: 3px solid #B45309; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5;">Option B · Amber</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="height: 56px; background: #B45309; border-radius: 4px;"></div>
+            <div style="height: 32px; background: #D97706; border-radius: 4px;"></div>
+            <div style="height: 20px; background: rgba(180,83,9,0.12); border-radius: 4px;"></div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">#B45309 · Amber</div>
+            <div style="font-size: 12px; opacity: 0.6; margin-top: 4px; line-height: 1.4;">Warm, bold, pairs naturally with the grey canvas. Energetic without crossing into the orange-warning territory.</div>
+          </div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--red); margin-top: auto;">Good for: campaign, social</div>
+        </div>
+        <div style="border-right: 1px solid var(--ink); border-top: 3px solid #6B3F5E; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5;">Option C · Plum</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="height: 56px; background: #6B3F5E; border-radius: 4px;"></div>
+            <div style="height: 32px; background: #9B6B8E; border-radius: 4px;"></div>
+            <div style="height: 20px; background: rgba(107,63,94,0.12); border-radius: 4px;"></div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">#6B3F5E · Plum</div>
+            <div style="font-size: 12px; opacity: 0.6; margin-top: 4px; line-height: 1.4;">Distinctive and unlike anything in the risk ladder. Skews editorial and peer-community — high contrast against warm grey.</div>
+          </div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--red); margin-top: auto;">Good for: community, peer</div>
+        </div>
+        <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px; border-right: 1px solid var(--ink); border-top: 3px solid #2D4A3E;">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5;">Option D · Forest</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="height: 56px; background: #2D4A3E; border-radius: 4px;"></div>
+            <div style="height: 32px; background: #4A7C68; border-radius: 4px;"></div>
+            <div style="height: 20px; background: rgba(45,74,62,0.12); border-radius: 4px;"></div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">#2D4A3E · Forest</div>
+            <div style="font-size: 12px; opacity: 0.6; margin-top: 4px; line-height: 1.4;">Deep, grounded, premium feel. Dark enough to not be confused with the safe-green functional colour in the risk ladder.</div>
+          </div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--red); margin-top: auto;">Good for: trust, premium</div>
+        </div>
+        <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px; border-top: 3px solid #317BB8;">
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #317BB8; font-weight: 700;">Option E · Trust Blue <span style="opacity:0.5; font-weight:400;">· legacy</span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="height: 56px; background: #317BB8; border-radius: 4px;"></div>
+            <div style="height: 32px; background: #4D96D4; border-radius: 4px;"></div>
+            <div style="height: 20px; background: rgba(49,123,184,0.12); border-radius: 4px;"></div>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">#317BB8 · Trust Blue</div>
+            <div style="font-size: 12px; opacity: 0.6; margin-top: 4px; line-height: 1.4;">Original brand secondary. Carries existing recognition and pairs naturally with the red. Strong community and peer-trust associations.</div>
+          </div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: #317BB8; margin-top: auto;">Good for: community, legacy</div>
+        </div>
+      </div>
+
+      <!-- Guardrail -->
+      <div class="tier-head" style="margin-top:72px;">
+        <span class="n" style="color: var(--signal-red);">Guardrail</span>
+        <h3 style="font-size: 20px; font-weight: 600;">Secondary never touches risk states.</h3>
+        <span class="note">Whichever option is chosen stays out of the red → orange → green → teal ladder entirely.</span>
+      </div>
+
+      <!-- Risk ladder -->
+      <div class="risk-ladder">
+        <h3>
+          <span>Risk ladder — Product color semantics</span>
+          <span class="meta">Trust score → color → verdict</span>
+        </h3>
+        <div class="ladder-row">
+          <div class="ladder-score" style="background: #EE3E41;">00<br><span style="font-size: 10px; opacity: 0.7;">–39</span></div>
+          <div class="ladder-label">Dangerous</div>
+          <div class="ladder-example">fancy-luxury-deals-official-outlet.biz</div>
+          <div class="ladder-action">Don't click</div>
+        </div>
+        <div class="ladder-row">
+          <div class="ladder-score" style="background: #FF6712;">40<br><span style="font-size: 10px; opacity: 0.7;">–59</span></div>
+          <div class="ladder-label">Likely Dangerous</div>
+          <div class="ladder-example">crypto-giveaway-elon-musk.net</div>
+          <div class="ladder-action">Sketchy — back out</div>
+        </div>
+        <div class="ladder-row">
+          <div class="ladder-score" style="background: #FF8A00;">60<br><span style="font-size: 10px; opacity: 0.7;">–69</span></div>
+          <div class="ladder-label">Warning</div>
+          <div class="ladder-example">newshop2025.store</div>
+          <div class="ladder-action">Proceed carefully</div>
+        </div>
+        <div class="ladder-row">
+          <div class="ladder-score" style="background: #63B100;">70<br><span style="font-size: 10px; opacity: 0.7;">–89</span></div>
+          <div class="ladder-label">Likely Safe</div>
+          <div class="ladder-example">smaller-indie-brand.com</div>
+          <div class="ladder-action">Probably fine</div>
+        </div>
+        <div class="ladder-row">
+          <div class="ladder-score" style="background: #00A67E;">90<br><span style="font-size: 10px; opacity: 0.7;">–100</span></div>
+          <div class="ladder-label">Safe</div>
+          <div class="ladder-example">nytimes.com</div>
+          <div class="ladder-action">Vibe check passed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TYPE ============ -->
+  <section class="section type-section" id="type">
+    <div class="wrap">
+      <div class="section-label">04 — Typography</div>
+      <h2 style="font-size: clamp(40px, 6vw, 72px); font-weight: 800; line-height: 0.95; letter-spacing: -0.035em; max-width: 900px;">One typeface. <span style="opacity:0.5;">Many registers.</span></h2>
+
+      <div class="type-specimen">
+        <div class="type-sample">
+          <div class="label">Primary — Inter</div>
+          <div class="type-display">Aa<span class="outline">Aa</span></div>
+          <div class="type-weights">
+            <div class="type-weight-row">
+              <div class="w-label">300 Light</div>
+              <div class="w-text w-300">Aa · BS detector</div>
+            </div>
+            <div class="type-weight-row">
+              <div class="w-label">400 Regular</div>
+              <div class="w-text w-400">Aa · BS detector</div>
+            </div>
+            <div class="type-weight-row">
+              <div class="w-label">500 Medium</div>
+              <div class="w-text w-500">Aa · BS detector</div>
+            </div>
+            <div class="type-weight-row">
+              <div class="w-label">700 Bold</div>
+              <div class="w-text w-700">Aa · BS detector</div>
+            </div>
+            <div class="type-weight-row">
+              <div class="w-label">900 Black</div>
+              <div class="w-text w-900">Aa · BS detector</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="type-sample">
+          <div class="label">Hierarchy in use</div>
+          <div class="hierarchy">
+            <div class="h-row">
+              <div class="spec">H1 · Inter 800<br/>-3.5%</div>
+              <div class="h-headline">Heads up: new phishing drop.</div>
+            </div>
+            <div class="h-row">
+              <div class="spec">H2 · Inter 500<br/>-2%</div>
+              <div class="h-subhead">Check that link before you tap.</div>
+            </div>
+            <div class="h-row">
+              <div class="spec">Body · Inter 400<br/>1.5 line</div>
+              <div class="h-body">Three million people reported this domain in the last 48 hours. Most of them landed here from a text message that looked like it came from their bank. It didn't.</div>
+            </div>
+            <div class="h-row">
+              <div class="spec">Data · Mono<br/>JetBrains</div>
+              <div class="h-mono">trust_score: 12/100 · flagged 2h ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VOICE ============ -->
+  <section class="section voice" id="voice">
+    <div class="wrap">
+      <div class="section-label">05 — Voice & Tone</div>
+      <h2>Same data. <span style="color: var(--red);">Different energy.</span></h2>
+
+      <div class="tone-table">
+        <div class="tone-head">
+          <div>Scenario</div>
+          <div>Old Tone — Clear & Confident</div>
+          <div>New Tone — Fast & High-Signal</div>
+        </div>
+        <div class="tone-row">
+          <div class="scenario">Greeting</div>
+          <div class="b2b">Your anti-scam partner, ScamAdviser.</div>
+          <div class="b2c">Your digital BS detector.</div>
+        </div>
+        <div class="tone-row">
+          <div class="scenario">Urgent Alert</div>
+          <div class="b2b">New phishing scams detected. Please verify the links you receive before interacting.</div>
+          <div class="b2c">Heads up: new phishing drop. Check that link before you tap.</div>
+        </div>
+        <div class="tone-row">
+          <div class="scenario">Education</div>
+          <div class="b2b">Spot a fake website easily with these 5 signs.</div>
+          <div class="b2c">5 red flags this site is actually a scam.</div>
+        </div>
+        <div class="tone-row">
+          <div class="scenario">Trust Verdict</div>
+          <div class="b2b">This site has a low Trust Score.</div>
+          <div class="b2c">This site failed the vibe check. (Trust Score: 12/100)</div>
+        </div>
+        <div class="tone-row">
+          <div class="scenario">Post-Install</div>
+          <div class="b2b">Thank you for installing ScamAdviser.</div>
+          <div class="b2c">You're covered. Go off.</div>
+        </div>
+      </div>
+
+      <div class="dos-donts">
+        <div class="dodo do">
+          <h4>Do</h4>
+          <ul>
+            <li>Lead with the verb. <em>"check that link"</em> not "it is recommended that you check."</li>
+            <li>Lowercase casual headers when the context is chill.</li>
+            <li>Use concrete numbers. <em>"12/100"</em> beats "low."</li>
+            <li>Be self-aware about AI. Name it as <em>Sharp</em>, not a buzzword.</li>
+            <li>Quote the community. <em>"2,341 people reported this"</em> > "our data shows."</li>
+          </ul>
+        </div>
+        <div class="dodo dont">
+          <h4>Don't</h4>
+          <ul>
+            <li>Fear-monger. <em>"You'll lose everything"</em> is cringe and Gen Z spots fake urgency instantly.</li>
+            <li>Reach for jargon. <em>"Threat vector"</em> belongs in a B2B deck, not an app.</li>
+            <li>Sound institutional. <em>"We advise you to…"</em> — no one talks like that.</li>
+            <li>Explain the tech unprompted. Nobody asked about the algorithm.</li>
+            <li>Moralize. We're not the online-safety police.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOODBOARD ============ -->
+  <section class="section moodboard" id="mood">
+    <div class="wrap">
+      <div class="section-label">06 — Moodboard</div>
+      <h2>What it feels like.</h2>
+
+      <div class="mood-grid">
+        <div class="mood-cell mc-1">
+          <span class="tag">Natural light</span>
+          <span class="caption">Warm. Unstaged. Morning-in-a-kitchen energy.</span>
+        </div>
+        <div class="mood-cell mc-2">
+          <span class="tag">Caution</span>
+          <span class="caption">Analog tape, not digital badge.</span>
+        </div>
+        <div class="mood-cell mc-3">
+          <span class="tag">Real moments</span>
+          <span class="caption">Candid phone scrolling, cozy and relatable.</span>
+        </div>
+        <div class="mood-cell mc-4">
+          <span class="tag">Digital threat</span>
+          <span class="caption">Something lurking. Cinematic, minimal.</span>
+        </div>
+        <div class="mood-cell mc-5">
+          <span class="tag">Peer trust</span>
+          <span class="caption">"Wait, is this legit?" — real human connection.</span>
+        </div>
+        <div class="mood-cell mc-6">
+          <span class="tag">Human-centered</span>
+          <span class="caption">Warmth meets technology. Ethereal, modern.</span>
+        </div>
+        <div class="mood-cell mc-7">
+          <span class="tag">Everyday real</span>
+          <span class="caption">Unpolished, authentic. Messy desks and coffee rings.</span>
+        </div>
+        <div class="mood-cell mc-8">
+          <span class="tag">Protection</span>
+          <span class="caption">Approachable security. Shield without intimidation.</span>
+        </div>
+      </div>
+
+      <div class="photo-direction">
+        <div class="section-label" style="margin-bottom: 16px;">Photography direction</div>
+        <h3 style="font-size: 32px; font-weight: 800; letter-spacing: -0.025em; max-width: 800px; line-height: 1.05;">Real people, ordinary moments — caught mid-scroll, mid-laugh, mid-eye-roll at a sketchy DM.</h3>
+
+        <div class="photo-heads">
+          <div class="yes">
+            <h4>Yes — shoot this</h4>
+            <ul>
+              <li>Candid phone scrolling on a couch, in bed, at a café</li>
+              <li>Natural light. Morning windows. Golden hour if earned.</li>
+              <li>Friends showing each other a screen ("wait, is this legit?")</li>
+              <li>Hands, half-faces, over-the-shoulder angles</li>
+              <li>Messy everyday objects — unfinished coffee, tangled earbuds</li>
+              <li>A real age range. Not just 22-year-olds with perfect teeth.</li>
+            </ul>
+          </div>
+          <div class="no">
+            <h4>No — never shoot this</h4>
+            <ul>
+              <li>Hoodie hacker in a dark room with green code reflection</li>
+              <li>Glowing padlock icons floating over blue circuit backgrounds</li>
+              <li>Suit-and-briefcase "security professional" stock imagery</li>
+              <li>Red alarm overlays or siren graphics on screens</li>
+              <li>Binary "1010101" as a design motif. It's 2026.</li>
+              <li>Fear-face reactions. The vibe is aware, not panicked.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ UI EXPLORATION ============ -->
+  <section class="section ui-section" id="ui">
+    <div class="wrap">
+      <div class="section-label">07 — Web & Product UI</div>
+      <h2>Same voice, <span style="color: var(--signal-red);">across every surface.</span></h2>
+      <p class="ui-intro">Six touchpoints where the brand meets the product. Note: score numbers drive color, red means back-out, teal means breathe, and the mono font always carries the receipts.</p>
+
+      <div class="ui-grid">
+
+        <!-- Browser Extension -->
+        <div class="ui-card ui-ext">
+          <h3>A — Browser extension popup</h3>
+          <div class="title">Triggered on a flagged domain. Full red state.</div>
+          <div class="stage">
+            <div class="ext-popup">
+              <div class="ext-header">
+                <div class="ext-brand"><span style="display:inline-flex;align-items:center;"><img src="project/assets/sa-logo.png" alt="ScamAdviser" style="height:13px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.9;"></span> · live check</div>
+                <h5>Don't tap that link.</h5>
+              </div>
+              <div class="ext-body">
+                <div class="ext-url"><span class="strike">trust-bank-alert.info/login?ref=sms</span></div>
+                <div class="ext-score">
+                  <div class="num">12</div>
+                  <div class="info">
+                    <div class="label">Trust Score · 12/100</div>
+                    <div class="verdict">Failed the vibe check.</div>
+                  </div>
+                </div>
+                <div class="ext-reasons">
+                  <div class="reason"><span class="dot"></span>Domain registered 6 days ago</div>
+                  <div class="reason"><span class="dot"></span>2,341 users reported this as a scam</div>
+                  <div class="reason"><span class="dot"></span>Impersonating a real bank's branding</div>
+                </div>
+                <div class="ext-actions">
+                  <button class="ext-btn primary">Back to safety</button>
+                  <button class="ext-btn secondary">Why?</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone: Home feed -->
+        <div class="ui-card dark ui-phone">
+          <h3 style="color: rgba(255,255,255,0.7);">B — Mobile app · home</h3>
+          <div class="title">Recent checks. Peer signal. Low friction.</div>
+          <div class="stage">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-status">
+                  <span>9:41</span>
+                  <span class="right">● ●●● ▣</span>
+                </div>
+                <div class="phone-content">
+                  <div>
+                    <div class="phone-h1">morning, Maya.<br/><span class="lc">looking clean so far.</span></div>
+                    <div class="phone-caption">Last 7 days · 43 links checked</div>
+                  </div>
+                  <div class="phone-check-card">
+                    <div class="score-badge danger">12</div>
+                    <div class="info">
+                      <div class="site">trust-bank-alert.info</div>
+                      <div class="when">blocked · 9:34 am</div>
+                    </div>
+                    <div class="tag dd">scam</div>
+                  </div>
+                  <div class="phone-check-card">
+                    <div class="score-badge warn">58</div>
+                    <div class="info">
+                      <div class="site">newshop2025.store</div>
+                      <div class="when">checked · yesterday</div>
+                    </div>
+                    <div class="tag ww">sus</div>
+                  </div>
+                  <div class="phone-check-card">
+                    <div class="score-badge safe">94</div>
+                    <div class="info">
+                      <div class="site">depop.com</div>
+                      <div class="when">checked · yesterday</div>
+                    </div>
+                    <div class="tag ss">safe</div>
+                  </div>
+                  <div class="phone-community">
+                    <div class="tiny">Community alert · 2h ago</div>
+                    <div class="big-txt">A fake Venmo "refund" page is going around. See the receipts →</div>
+                  </div>
+                </div>
+                <div class="phone-tab">
+                  <span class="t active">● Feed</span>
+                  <span class="t">Check</span>
+                  <span class="t">Community</span>
+                  <span class="t">Me</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Score detail -->
+        <div class="ui-card ui-score">
+          <h3>C — Trust score · detail view</h3>
+          <div class="title">Why this site failed. Plain facts, no fear.</div>
+          <div class="stage">
+            <div class="score-card">
+              <div class="score-left">
+                <div class="domain">trust-bank-alert.info</div>
+                <h6>Trust Score</h6>
+                <div class="score-big">12<span class="denom">/100</span></div>
+                <div class="score-verdict">Failed the <span class="pill">vibe check</span></div>
+                <p>Everything about this site reads like a phishing page dressed up as your bank. Below is what we found. Make the call.</p>
+                <div class="score-actions">
+                  <button class="p">Report it too</button>
+                  <button class="s">How we score</button>
+                </div>
+              </div>
+              <div class="score-right">
+                <h6>5 things we spotted</h6>
+                <div class="factor-list">
+                  <div class="factor">
+                    <div class="icon bad">!</div>
+                    <div class="txt">
+                      <div class="t">Domain is 6 days old</div>
+                      <div class="d">Real banks don't launch websites last Tuesday.</div>
+                    </div>
+                    <div class="val">6d</div>
+                  </div>
+                  <div class="factor">
+                    <div class="icon bad">!</div>
+                    <div class="txt">
+                      <div class="t">2,341 users flagged it</div>
+                      <div class="d">In the last 48 hours alone. Peer signal is loud here.</div>
+                    </div>
+                    <div class="val">48h</div>
+                  </div>
+                  <div class="factor">
+                    <div class="icon bad">!</div>
+                    <div class="txt">
+                      <div class="t">No SSL / insecure connection</div>
+                      <div class="d">Password page without https is a hard no.</div>
+                    </div>
+                    <div class="val">NONE</div>
+                  </div>
+                  <div class="factor">
+                    <div class="icon warn">?</div>
+                    <div class="txt">
+                      <div class="t">Logo copied from a real bank</div>
+                      <div class="d">Visual lift match &gt; 94% vs. official brand assets.</div>
+                    </div>
+                    <div class="val">94%</div>
+                  </div>
+                  <div class="factor">
+                    <div class="icon warn">?</div>
+                    <div class="txt">
+                      <div class="t">WHOIS behind privacy proxy</div>
+                      <div class="d">Registered via a forwarding service in RU.</div>
+                    </div>
+                    <div class="val">RU</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social card -->
+        <div class="ui-card ui-social">
+          <h3>D — Share card · social</h3>
+          <div class="title">Shareable receipts for the group chat.</div>
+          <div class="stage">
+            <div class="social-card">
+              <div class="social-header">
+                <span>● SCAMADVISER</span>
+                <span>ALERT · 04.17</span>
+              </div>
+              <div class="social-body">
+                a fake venmo <em>refund</em> page is going around.
+              </div>
+              <div class="social-foot">
+                <div class="counter">2,341</div>
+                <div class="label">reports · 48 hrs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Community -->
+        <div class="ui-card ui-community">
+          <h3>E — Community reports</h3>
+          <div class="title">Peer trust, receipts first.</div>
+          <div class="stage" style="align-items: stretch;">
+            <div class="comm-card">
+              <div class="comm-header">
+                <h5>What people are flagging right now</h5>
+                <div class="stat"><strong>+2,341</strong> reports · last 48h</div>
+              </div>
+              <div class="reports">
+                <div class="report">
+                  <div class="avatar av-1">MJ</div>
+                  <div class="content">
+                    <div class="who">mjcurio <span class="flair">· Top Reporter · 412 flags</span></div>
+                    <div class="msg">Got a text saying my "account was locked." Link was <span style="font-family: var(--mono); font-size: 12px; background: rgba(238,62,65,0.08); padding: 1px 4px; border-radius: 2px; color: var(--signal-red);">trust-bank-alert.info</span> — not the real bank.</div>
+                    <div class="meta"><span>12 min ago</span><span>· via SMS</span><span>· 48 agree</span></div>
+                  </div>
+                  <div class="verdict scam">scam</div>
+                </div>
+                <div class="report">
+                  <div class="avatar av-2">KL</div>
+                  <div class="content">
+                    <div class="who">kyla.l <span class="flair">· Verified · 28 flags</span></div>
+                    <div class="msg">Bought from this Depop seller last week, everything arrived legit. Can confirm not a scam despite the sketchy bio.</div>
+                    <div class="meta"><span>1h ago</span><span>· purchase confirmed</span></div>
+                  </div>
+                  <div class="verdict legit">legit</div>
+                </div>
+                <div class="report">
+                  <div class="avatar av-3">DR</div>
+                  <div class="content">
+                    <div class="who">d.rivera <span class="flair">· New reporter</span></div>
+                    <div class="msg">TikTok ad for "free AirPods if you answer a survey" — classic data harvest. Don't.</div>
+                    <div class="meta"><span>3h ago</span><span>· via TikTok</span><span>· 112 agree</span></div>
+                  </div>
+                  <div class="verdict scam">scam</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Safe state -->
+        <div class="ui-card ui-safe">
+          <h3>F — Safe confirmation</h3>
+          <div class="title">Low-key green. No celebration.</div>
+          <div class="stage">
+            <div class="safe-card">
+              <div class="top">● Vibe check passed</div>
+              <div>
+                <div class="domain-c">nytimes.com</div>
+              </div>
+              <h5>you're good.<br/>go off.</h5>
+              <div class="score-line">
+                <div class="n">98</div>
+                <div class="d">/100 · trust score</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAGLINE SYSTEM ============ -->
+  <section class="section taglines" id="taglines">
+    <div class="wrap">
+      <div class="section-label">08 — Tagline System</div>
+      <h2>One hero line. <em>A family behind it.</em></h2>
+      <p class="intro">The hero line carries the brand. The supporting lines are situation-specific — campaign hooks, product captions, partner comms. Same voice, different volume.</p>
+
+      <div class="tagline-grid">
+        <div class="tagline-main">
+          <div class="spec">Hero · Primary Tagline</div>
+          <div class="big">your digital<br/>bs<span class="slash">/</span>detector.</div>
+          <div class="note">Lockup tagline. Used on hero moments, out-of-home, major product surfaces. Never translate; the cadence is the point.</div>
+        </div>
+        <div class="tagline-list">
+          <div class="tag-row">
+            <div class="ctx">Campaign hook</div>
+            <div class="line">Catch what <em>you'd</em> miss.</div>
+          </div>
+          <div class="tag-row">
+            <div class="ctx">Community / peer</div>
+            <div class="line">Millions of users. One group chat.</div>
+          </div>
+          <div class="tag-row">
+            <div class="ctx">Product caption</div>
+            <div class="line">Paste a link. <em>Get the receipts.</em></div>
+          </div>
+          <div class="tag-row">
+            <div class="ctx">Partner / press</div>
+            <div class="line">Peer-powered scam detection, backed by AI.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSE ============ -->
+  <section class="close">
+    <div class="grain"></div>
+    <h2>catch what <span class="red">you'd</span> miss.</h2>
+    <p>The brand isn't the logo. It's the moment a user forwards a sketchy link to a friend with the caption: "lol scamadviser already flagged it."</p>
+    <div class="close-foot">
+      <div>ScamAdviser · B2C Brand Exploration</div>
+      <div>V1 · April 2026 · Internal</div>
+    </div>
+  </section>
+
+<script>
+(function(){
+  var navLinks = document.querySelectorAll('.mini-nav a');
+  var sections = Array.from(navLinks).map(function(a) {
+    return document.getElementById(a.getAttribute('href').slice(1));
+  });
+  function updateActive() {
+    var y = window.scrollY + window.innerHeight * 0.35;
+    var activeIdx = 0;
+    sections.forEach(function(s, i) { if (s && s.offsetTop <= y) activeIdx = i; });
+    navLinks.forEach(function(a, i) { a.classList.toggle('active', i === activeIdx); });
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+
+})();
+</script>
+
+</body>
+</html>
