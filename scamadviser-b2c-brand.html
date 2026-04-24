@@ -45,11 +45,94 @@
   }
   ::selection { background: var(--red); color: var(--white); }
 
+  /* Login gate */
+  .login-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+    transition: opacity 0.4s, visibility 0.4s;
+  }
+  .login-gate.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .login-gate .login-logo {
+    height: 32px;
+    filter: brightness(0) invert(1);
+  }
+  .login-gate .login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 380px;
+    padding: 0 24px;
+  }
+  .login-gate .login-title {
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .login-gate .login-input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 16px;
+    outline: none;
+    text-align: center;
+    letter-spacing: 0.05em;
+    transition: border-color 0.2s;
+  }
+  .login-gate .login-input:focus {
+    border-color: rgba(255,255,255,0.4);
+  }
+  .login-gate .login-input::placeholder {
+    color: rgba(255,255,255,0.3);
+  }
+  .login-gate .login-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    background: var(--red);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .login-gate .login-btn:hover {
+    background: #E03338;
+    transform: scale(1.02);
+  }
+  .login-gate .login-error {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--signal-red);
+    height: 16px;
+  }
+  body.locked { overflow: hidden; }
+
   .section { padding: 120px 48px; position: relative; }
   .wrap { max-width: 1400px; margin: 0 auto; }
   .eyebrow {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -60,7 +143,7 @@
     align-items: center;
     gap: 10px;
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -96,7 +179,7 @@
   .nav {
     display: flex; justify-content: space-between; align-items: center;
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 14px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     z-index: 10;
@@ -114,7 +197,7 @@
     gap: 28px;
     padding-top: 40px;
   }
-  .hero-left { display: flex; flex-direction: column; gap: 24px; max-width: 1100px; }
+  .hero-left { display: flex; flex-direction: column; gap: 24px; max-width: 1100px; align-items: center; text-align: center; margin: 0 auto; }
   .hero h1 .nw { white-space: nowrap; }
 
   .hero-search {
@@ -123,6 +206,7 @@
     border-radius: 18px;
     padding: 14px 18px;
     margin-top: 16px;
+    text-align: left;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -284,7 +368,7 @@
   .sp-input .send { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; }
   .hero-label {
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--signal-red);
@@ -302,11 +386,12 @@
   .hero h1 {
     font-family: var(--sans);
     font-weight: 900;
-    font-size: clamp(60px, 15vw, 200px);
+    font-size: clamp(58px, 15vw, 180px);
     line-height: 0.88;
     letter-spacing: -0.055em;
     text-transform: lowercase;
     color: var(--ink);
+    min-height: 2em;
   }
   .hero h1 .slash {
     color: var(--red);
@@ -327,6 +412,13 @@
     height: 0.12em;
     background: var(--red);
   }
+  .tw-cursor {
+    color: var(--red);
+    animation: tw-blink 0.7s steps(2, start) infinite;
+    font-weight: 300;
+    margin-left: 2px;
+  }
+  @keyframes tw-blink { 50% { opacity: 0; } }
   .hero-sub {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -334,6 +426,8 @@
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid rgba(0,0,0,0.12);
+    text-align: left;
+    width: 100%;
   }
   .hero-sub p {
     font-size: 18px;
@@ -345,7 +439,7 @@
   }
   .hero-meta {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 14px;
     letter-spacing: 0.1em;
     line-height: 1.9;
     color: rgba(0,0,0,0.45);
@@ -1002,14 +1096,15 @@
     display: flex;
     flex-direction: column;
   }
-  .ui-card.dark { background: var(--anti-flash); color: var(--ink); border-top: 3px solid var(--red); }
+  .ui-card.dark { background: var(--anti-flash); color: var(--ink); }
   .ui-card h3 {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 14px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     margin-bottom: 8px;
-    opacity: 0.7;
+    opacity: 0.5;
+    color: var(--ink);
   }
   .ui-card .title {
     font-size: 24px;
@@ -1329,6 +1424,7 @@
     opacity: 0.5;
     font-weight: 700;
     letter-spacing: -0.04em;
+    margin-left: 8px;
   }
   .score-verdict {
     font-size: 28px;
@@ -1451,7 +1547,7 @@
     text-decoration-thickness: 4px;
     text-underline-offset: 2px;
   }
-  .social-foot { z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; }
+  .social-foot { z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
   .social-foot .counter {
     font-family: var(--sans);
     font-size: 60px;
@@ -1584,13 +1680,15 @@
     overflow: hidden;
   }
   .safe-card::before {
-    content: '✓';
+    content: '';
     position: absolute;
-    font-size: 280px;
-    line-height: 1;
-    right: -40px; bottom: -100px;
+    width: 160px; height: 260px;
+    right: -10px; bottom: -60px;
     opacity: 0.12;
-    font-weight: 900;
+    background:
+      linear-gradient(55deg, transparent 42%, white 42%, white 52%, transparent 52%),
+      linear-gradient(-55deg, transparent 30%, white 30%, white 40%, transparent 40%);
+    transform: rotate(-5deg);
   }
   .safe-card .top {
     font-family: var(--mono);
@@ -1977,7 +2075,18 @@
   }
 </style>
 </head>
-<body>
+<body class="locked">
+
+  <!-- Login Gate -->
+  <div class="login-gate" id="loginGate">
+    <img src="project/assets/sa-logo.png" alt="ScamAdviser" class="login-logo">
+    <div class="login-box">
+      <div class="login-title">B2C Brand Guideline</div>
+      <input type="password" class="login-input" id="loginInput" placeholder="Enter password" autocomplete="off" autofocus>
+      <button class="login-btn" id="loginBtn">Enter</button>
+      <div class="login-error" id="loginError"></div>
+    </div>
+  </div>
 
   <!-- Sticky mini-nav -->
   <nav class="mini-nav" aria-label="Section navigation">
@@ -2006,7 +2115,7 @@
           <span class="dot"></span>
           Live — 312 suspicious domains flagged in the last hour
         </div>
-        <h1>your digital<br/><span class="nw"><em>BS</em><span class="slash">/</span>detector.</span></h1>
+        <h1 id="heroHeadline" class="typewriter-headline"><span class="tw-text"></span><span class="tw-cursor">|</span></h1>
 
         <div class="hero-search" role="search" aria-label="ScamAdviser search">
           <div class="hs-top">
@@ -2072,7 +2181,8 @@
         </div>
       </div>
 
-      <div class="pillars">
+      <h2 style="font-size: 32px; font-weight: 800; letter-spacing: -0.025em; margin-top: 96px; margin-bottom: 0; line-height: 1.1;">ScamAdviser B2C brand personality</h2>
+      <div class="pillars" style="margin-top: 32px;">
         <div class="pillar">
           <div class="num">01</div>
           <h4>Straight-up</h4>
@@ -2835,6 +2945,36 @@
 
 <script>
 (function(){
+  // Login gate
+  var passwords = ['gogolook2026', '1234'];
+  var gate = document.getElementById('loginGate');
+  var input = document.getElementById('loginInput');
+  var btn = document.getElementById('loginBtn');
+  var error = document.getElementById('loginError');
+
+  if (sessionStorage.getItem('sa-brand-auth') === '1') {
+    gate.classList.add('hidden');
+    document.body.classList.remove('locked');
+  }
+
+  function tryLogin() {
+    if (passwords.indexOf(input.value) !== -1) {
+      sessionStorage.setItem('sa-brand-auth', '1');
+      gate.classList.add('hidden');
+      document.body.classList.remove('locked');
+    } else {
+      error.textContent = 'Incorrect password';
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  btn.addEventListener('click', tryLogin);
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') tryLogin();
+    error.textContent = '';
+  });
+
   var navLinks = document.querySelectorAll('.mini-nav a');
   var sections = Array.from(navLinks).map(function(a) {
     return document.getElementById(a.getAttribute('href').slice(1));
@@ -2847,6 +2987,118 @@
   }
   window.addEventListener('scroll', updateActive, { passive: true });
   updateActive();
+
+  // Typewriter headline rotation
+  var headlines = [
+    { line1: 'your online', em: 'BS', slash: true, line2: 'detector.' },
+    { line1: 'trust no link', em: '', slash: true, line2: 'blindly.' },
+    { line1: 'sketchy link?', em: '', slash: true, line2: 'we got you.' },
+    { line1: "don't get", em: '', slash: true, line2: 'played online.' },
+    { line1: 'be street', em: '', slash: false, line2: '-smart/online.' }
+  ];
+  var twEl = document.querySelector('.tw-text');
+  var cursorEl = document.querySelector('.tw-cursor');
+  var currentIdx = 0;
+  var typeSpeed = 45;
+  var deleteSpeed = 25;
+  var holdTime = 5000;
+
+  function buildHTML(h) {
+    var result = h.line1 + '<br/><span class="nw">';
+    if (h.em) result += '<em>' + h.em + '</em>';
+    if (h.slash) result += '<span class="slash">/</span>';
+    var l2 = h.line2.replace(/\//g, '<span class="slash">/</span>');
+    result += l2 + '</span>';
+    return result;
+  }
+
+  function plainText(h) {
+    var t = h.line1 + '\n';
+    if (h.em) t += h.em;
+    if (h.slash) t += '/';
+    t += h.line2;
+    return t;
+  }
+
+  function typeText(text, onDone) {
+    var i = 0;
+    function tick() {
+      if (i <= text.length) {
+        var partial = text.slice(0, i);
+        var h = headlines[currentIdx];
+        var html = renderPartial(h, partial);
+        twEl.innerHTML = html;
+        i++;
+        setTimeout(tick, typeSpeed);
+      } else {
+        onDone();
+      }
+    }
+    tick();
+  }
+
+  function renderPartial(h, partial) {
+    var full = plainText(h);
+    var len = partial.length;
+    var line1 = h.line1;
+    var sep = h.em + (h.slash ? '/' : '') + h.line2;
+    if (len <= line1.length) {
+      return partial;
+    }
+    var rest = len - line1.length - 1;
+    var after = '';
+    var pos = 0;
+    if (h.em && pos + h.em.length >= rest) {
+      after = '<em>' + h.em.slice(0, rest - pos) + '</em>';
+    } else if (h.em) {
+      pos += h.em.length;
+      if (h.slash && rest <= pos + 1) {
+        after = '<em>' + h.em + '</em>' + (rest > pos ? '<span class="slash">/</span>' : '');
+      } else if (h.slash) {
+        pos += 1;
+        after = '<em>' + h.em + '</em><span class="slash">/</span>' + h.line2.slice(0, rest - pos);
+      }
+    } else if (h.slash && rest < 1) {
+      after = '';
+    } else if (h.slash) {
+      after = '<span class="slash">/</span>' + h.line2.slice(0, rest - 1);
+    } else {
+      after = h.line2.slice(0, rest);
+    }
+    return line1 + '<br/><span class="nw">' + after + '</span>';
+  }
+
+  function deleteText(onDone) {
+    var full = plainText(headlines[currentIdx]);
+    var i = full.length;
+    function tick() {
+      if (i >= 0) {
+        var partial = full.slice(0, i);
+        var h = headlines[currentIdx];
+        twEl.innerHTML = i > h.line1.length ? renderPartial(h, partial) : partial;
+        i--;
+        setTimeout(tick, deleteSpeed);
+      } else {
+        twEl.innerHTML = '';
+        onDone();
+      }
+    }
+    tick();
+  }
+
+  function cycle() {
+    var full = plainText(headlines[currentIdx]);
+    typeText(full, function() {
+      setTimeout(function() {
+        deleteText(function() {
+          currentIdx = (currentIdx + 1) % headlines.length;
+          setTimeout(cycle, 300);
+        });
+      }, holdTime);
+    });
+  }
+
+  cycle();
 
 })();
 </script>
