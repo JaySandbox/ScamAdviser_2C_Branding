@@ -1053,6 +1053,476 @@
   .photo-heads li { font-size: 15px; line-height: 1.5; }
   .photo-heads li::before { content: '— '; opacity: 0.5; }
 
+  /* ---- Visual Language sub-sections ---- */
+  .mood-subsection {
+    margin-top: 80px;
+    border-top: 1px solid rgba(0,0,0,0.15);
+    padding-top: 48px;
+  }
+  .mood-subsection:first-of-type {
+    margin-top: 56px;
+    border-top: none;
+    padding-top: 0;
+  }
+  .sub-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 24px;
+  }
+  .photo-brief {
+    max-width: 720px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .photo-placeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .photo-slot {
+    aspect-ratio: 4/3;
+    border: 2px dashed rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--white);
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .photo-slot:hover { border-color: rgba(0,0,0,0.3); }
+  .photo-slot .slot-icon {
+    width: 28px; height: 28px;
+    opacity: 0.12;
+  }
+  .photo-slot .slot-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    max-width: 140px;
+  }
+
+  .icon-spec {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 24px 32px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: var(--white);
+    max-width: 720px;
+  }
+  .icon-spec-item strong {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.45;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .icon-spec-item span {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .icon-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 28px 16px 20px;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .icon-cell svg {
+    width: 32px; height: 32px;
+  }
+  .icon-cell .icon-name {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+  .icon-cell.accent svg .accent-fill {
+    fill: var(--red);
+    fill-opacity: 0.12;
+  }
+
+  /* ---- Data Visualization bento grid ---- */
+  .dataviz-bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 12px;
+    margin-top: 48px;
+  }
+  .dataviz-bento .bento-cell {
+    aspect-ratio: 1 / 1;
+    padding: 24px;
+  }
+  .bento-corner {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .bento-corner.tl { top: 24px; left: 24px; }
+  .bento-corner.tr { top: 24px; right: 24px; }
+  .bento-corner.bl { bottom: 24px; left: 24px; }
+  .bento-corner.br { bottom: 24px; right: 24px; }
+  .bento-corner.red { background: var(--red); }
+  .bento-corner.invert { background: var(--white); color: var(--ink); }
+  .bento-editorial {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(28px, 4.2vw, 56px);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+  }
+  .bento-editorial .accent { color: var(--red); }
+  .bento-editorial .italic { font-style: italic; font-weight: 800; }
+  .bento-meta {
+    font-family: var(--sans);
+    font-size: 11px;
+    line-height: 1.35;
+    opacity: 0.9;
+    max-width: 60%;
+  }
+  .bento-stat-mega {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(80px, 14vw, 180px);
+    letter-spacing: -0.05em;
+    line-height: 0.85;
+  }
+  .bento-stat-mega .unit { color: var(--ink); opacity: 0.85; }
+  .bento-cell.red .bento-stat-mega .unit { color: var(--ink); }
+  .bento-stat-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .bento-stat-row .num {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    color: var(--red);
+  }
+  .bento-cell.dark .bento-stat-row .num { color: var(--red); }
+  .bento-stat-row .lbl {
+    font-family: var(--sans);
+    font-size: 11px;
+    opacity: 0.7;
+  }
+  .bento-substats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: auto;
+  }
+  .bento-substat {
+    border-radius: 18px;
+    padding: 14px 16px;
+    aspect-ratio: 1.4 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .bento-substat.red { background: var(--red); color: var(--white); }
+  .bento-substat.grey { background: #BABCC7; color: var(--ink); }
+  .bento-substat .num {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(20px, 2.4vw, 32px);
+    letter-spacing: -0.03em;
+  }
+  .bento-substat .lbl {
+    font-size: 10px;
+    line-height: 1.2;
+    opacity: 0.85;
+  }
+  .bento-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: -0.03em;
+  }
+  .bento-line-svg, .bento-bar-svg { width: 100%; height: 100%; }
+  .bento-photo {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .bento-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(204,20,23,0.0) 0%, rgba(204,20,23,0.55) 100%);
+  }
+  .bento-photo .ph-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(204,20,23,0.4) 0%, rgba(26,26,26,0.85) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .bento-callout {
+    background: var(--red);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: -0.01em;
+    display: inline-block;
+    width: fit-content;
+  }
+  .bento-cell {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+  }
+  .bento-cell.dark {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .bento-cell.light {
+    background: var(--white);
+    color: var(--ink);
+  }
+  .bento-cell.red {
+    background: var(--red);
+    color: var(--white);
+  }
+  .bento-cell.paper {
+    background: var(--warm-grey);
+    color: var(--ink);
+  }
+  .bento-cell .bento-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .bento-cell .bento-stat {
+    font-family: var(--mono);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+  }
+  .bento-cell .bento-stat.xl {
+    font-size: clamp(56px, 8vw, 96px);
+  }
+  .bento-cell .bento-stat.lg {
+    font-size: clamp(36px, 5vw, 56px);
+  }
+  .bento-cell .bento-stat.md {
+    font-size: clamp(28px, 3.5vw, 40px);
+  }
+  .bento-cell .bento-stat .accent {
+    color: var(--red);
+  }
+  .bento-cell.dark .bento-stat .accent,
+  .bento-cell.red .bento-stat .accent {
+    color: var(--white);
+    opacity: 0.5;
+  }
+  .bento-cell .bento-desc {
+    font-size: 13px;
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+    opacity: 0.6;
+    margin-top: 8px;
+  }
+  .bento-cell .bento-headline {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(20px, 3vw, 28px);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .bento-cell .bento-headline .hl-red { color: var(--red); }
+  .bento-cell.dark .bento-headline .hl-red { color: var(--signal-red); }
+
+  /* Mini chart elements */
+  .mini-chart { flex: 1; display: flex; align-items: flex-end; gap: 6px; padding-top: 16px; }
+  .mini-bar {
+    flex: 1;
+    background: var(--red);
+    border-radius: 2px 2px 0 0;
+    min-height: 8px;
+    opacity: 0.85;
+  }
+  .mini-bar.muted { background: currentColor; opacity: 0.12; }
+  .mini-line-chart {
+    flex: 1;
+    padding-top: 16px;
+    position: relative;
+    min-height: 80px;
+  }
+  .mini-line-chart svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  /* Bento grid spans */
+  .bento-wide { grid-column: span 2; }
+  .bento-tall { grid-row: span 2; }
+
+  /* ---- Chart Pattern Library ---- */
+  .chart-lib-heading {
+    margin-top: 80px;
+    margin-bottom: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .chart-lib-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .chart-pattern {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 240px;
+  }
+  .chart-pattern.dark {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .chart-pattern-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .chart-pattern-canvas {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+  }
+  .chart-pattern-canvas svg { width: 100%; height: auto; max-height: 140px; }
+  .chart-pattern-use {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    opacity: 0.7;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 12px;
+  }
+  .chart-pattern.dark .chart-pattern-use { border-top-color: rgba(255,255,255,0.12); }
+
+  /* ---- Color Logic ---- */
+  .color-logic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--ink);
+    margin-top: 16px;
+  }
+  .color-logic-cell {
+    padding: 28px;
+    border-right: 1px solid var(--ink);
+    background: var(--white);
+  }
+  .color-logic-cell:last-child { border-right: none; }
+  .color-logic-cell h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
+  .color-logic-cell .swatch-row {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+  .color-logic-cell .swatch {
+    flex: 1;
+    height: 24px;
+  }
+  .color-logic-cell p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .color-logic-cell .rule {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    opacity: 0.6;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  .color-logic-cell .rule strong {
+    color: var(--red);
+    font-weight: 400;
+  }
+
   /* ============ UI EXPLORATION ============ */
   .ui-section {
     background: var(--white);
@@ -2064,6 +2534,14 @@
     .ladder-example { display: none; }
     .tone-head, .tone-row { grid-template-columns: 100px 1fr 1fr; }
     .photo-heads { grid-template-columns: 1fr; }
+    .photo-placeholder-grid { grid-template-columns: repeat(2, 1fr); }
+    .icon-grid { grid-template-columns: repeat(3, 1fr); }
+    .dataviz-bento { grid-template-columns: 1fr; }
+    .bento-wide { grid-column: span 1; }
+    .chart-lib-grid { grid-template-columns: 1fr; }
+    .color-logic-grid { grid-template-columns: 1fr; }
+    .color-logic-cell { border-right: none; border-bottom: 1px solid var(--ink); }
+    .color-logic-cell:last-child { border-bottom: none; }
   }
 </style>
 </head>
@@ -2088,7 +2566,7 @@
     <a href="#colors"   data-section="colors"   data-label="03 · Color">03</a>
     <a href="#type"     data-section="type"     data-label="04 · Type">04</a>
     <a href="#voice"    data-section="voice"    data-label="05 · Voice">05</a>
-    <a href="#mood"     data-section="mood"     data-label="06 · Mood">06</a>
+    <a href="#mood"     data-section="mood"     data-label="06 · Visual">06</a>
     <a href="#ui"       data-section="ui"       data-label="07 · UI">07</a>
     <a href="#taglines" data-section="taglines" data-label="08 · Taglines">08</a>
   </nav>
@@ -2565,13 +3043,473 @@
     </div>
   </section>
 
-  <!-- ============ MOODBOARD ============ -->
+  <!-- ============ VISUAL LANGUAGE ============ -->
   <section class="section moodboard" id="mood">
     <div class="wrap">
-      <div class="section-label">06 — Moodboard</div>
-      <h2>What it feels like.</h2>
+      <div class="section-label">06 — Visual Language</div>
+      <h2>What it looks <em style="font-style: normal; opacity: 0.4;">and</em> feels like.</h2>
 
-      <p style="font-family: var(--mono); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.4; padding: 120px 0; text-align: center;">Coming soon...</p>
+      <!-- ===== 06a — Photography Direction ===== -->
+      <div class="mood-subsection">
+        <div class="sub-label">06a — Photography Direction</div>
+        <p class="photo-brief">
+          Candid, not staged. Warm natural light, not studio-lit. The phone is always in frame — people mid-scroll, mid-tap, mid-reaction. Real spaces: café tables, messy desks, commute seats. Crop tight — hands, screens, expressions. If it looks like a stock photo, it's wrong.
+        </p>
+
+        <div class="photo-placeholder-grid">
+          <div class="photo-slot">
+            <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/></svg>
+            <span class="slot-label">Candid phone moment</span>
+          </div>
+          <div class="photo-slot">
+            <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>
+            <span class="slot-label">Warm café / co-work light</span>
+          </div>
+          <div class="photo-slot">
+            <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+            <span class="slot-label">Screen close-up</span>
+          </div>
+          <div class="photo-slot">
+            <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span class="slot-label">Peer group-chat energy</span>
+          </div>
+          <div class="photo-slot">
+            <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l8-4v18m8 0V11l-8-4"/></svg>
+            <span class="slot-label">Urban street candid</span>
+          </div>
+          <div class="photo-slot">
+            <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 11V6a2 2 0 00-2-2H8a2 2 0 00-2 2v5m12 0H6m12 0l2 9H4l2-9"/><path d="M10 14v2m4-2v2"/></svg>
+            <span class="slot-label">Hands-on-device detail</span>
+          </div>
+        </div>
+
+        <div class="dos-donts" style="margin-top: 56px;">
+          <div class="dodo do">
+            <h4>Do</h4>
+            <ul>
+              <li>Candid, mid-action. Person scrolling, tapping, reacting — never posing for the camera.</li>
+              <li>Warm natural light. Golden hour, window light, café glow — warm tones over cold.</li>
+              <li>Phone-first framing. The device is always in shot, it's the anchor of every composition.</li>
+              <li>Tight crops. Show hands, screens, expressions — skip the full-body wide shot.</li>
+              <li>Real spaces. Desks with clutter, café tables with crumbs, commute seats with bags.</li>
+            </ul>
+          </div>
+          <div class="dodo dont">
+            <h4>Don't</h4>
+            <ul>
+              <li>Studio lighting or white-background isolation. If it looks lit, it's wrong.</li>
+              <li>Stock-photo <em>"pointing at screen"</em> energy. Nobody holds a laptop like that.</li>
+              <li>Dark or dystopian <em>"hacker"</em> aesthetic. We're not a cybersecurity vendor.</li>
+              <li>Group shots that feel corporate or staged. No matching outfits, no conference rooms.</li>
+              <li>Gratuitous tech imagery. Server racks and circuit boards belong in a B2B deck.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 06b — Icon Direction ===== -->
+      <div class="mood-subsection">
+        <div class="sub-label">06b — Icon Set Direction</div>
+        <p class="photo-brief" style="margin-bottom: 32px;">
+          Rounded but sharp. 2px consistent stroke weight, rounded joins, semi-filled accents in SA Red on emphasis icons only. Source set: <em style="font-family: var(--mono); font-style: normal; font-size: 14px; letter-spacing: 0.02em; background: var(--anti-flash); padding: 2px 8px; border-radius: 2px;">Phosphor Icons · Regular</em> — MIT licensed, 9 000+ icons.
+        </p>
+
+        <div class="icon-spec">
+          <div class="icon-spec-item"><strong>Grid</strong><span>24 × 24 px</span></div>
+          <div class="icon-spec-item"><strong>Stroke</strong><span>2 px</span></div>
+          <div class="icon-spec-item"><strong>Corners</strong><span>2 px radius</span></div>
+          <div class="icon-spec-item"><strong>Caps &amp; Joins</strong><span>Round</span></div>
+          <div class="icon-spec-item"><strong>Accent Fill</strong><span style="color: var(--red);">SA Red @ 12%</span></div>
+          <div class="icon-spec-item"><strong>Source</strong><span>Phosphor Regular</span></div>
+        </div>
+
+        <div class="icon-grid">
+          <!-- ShieldCheck -->
+          <div class="icon-cell accent">
+            <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <path class="accent-fill" d="M40 114.79V56a8 8 0 018-8h160a8 8 0 018 8v58.77c0 84.18-71.31 112.07-85.54 116.8a7.54 7.54 0 01-5 0C111.25 226.86 40 198.97 40 114.79z"/>
+              <polyline points="88 136 112 160 168 104"/>
+            </svg>
+            <span class="icon-name">Shield</span>
+          </div>
+          <!-- Warning -->
+          <div class="icon-cell accent">
+            <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <path class="accent-fill" d="M114.15 39.94l-84 148.76A12 12 0 0040.56 208h168.88a12 12 0 0010.41-19.3l-84-148.76a12 12 0 00-21.7 0z"/>
+              <line x1="128" y1="112" x2="128" y2="144"/>
+              <circle cx="128" cy="172" r="4" fill="currentColor" stroke="none"/>
+            </svg>
+            <span class="icon-name">Warning</span>
+          </div>
+          <!-- MagnifyingGlass -->
+          <div class="icon-cell">
+            <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="116" cy="116" r="72"/>
+              <line x1="168.57" y1="168.57" x2="224" y2="224"/>
+            </svg>
+            <span class="icon-name">Search</span>
+          </div>
+          <!-- LockSimple -->
+          <div class="icon-cell">
+            <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="40" y="112" width="176" height="112" rx="8"/>
+              <path d="M80 112V80a48 48 0 0196 0v32"/>
+              <circle cx="128" cy="164" r="4" fill="currentColor" stroke="none"/>
+            </svg>
+            <span class="icon-name">Lock</span>
+          </div>
+          <!-- Eye -->
+          <div class="icon-cell">
+            <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M128 56C48 56 16 128 16 128s32 72 112 72 112-72 112-72-32-72-112-72z"/>
+              <circle cx="128" cy="128" r="32"/>
+            </svg>
+            <span class="icon-name">Eye</span>
+          </div>
+          <!-- ChatCircle -->
+          <div class="icon-cell accent">
+            <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <path class="accent-fill" d="M128 24A104 104 0 0036.18 176.07L24.33 210.93a14 14 0 0017.71 17.74l34.9-11.85A104 104 0 10128 24z"/>
+            </svg>
+            <span class="icon-name">Chat</span>
+          </div>
+          <!-- CheckCircle -->
+          <div class="icon-cell accent">
+            <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <circle class="accent-fill" cx="128" cy="128" r="96"/>
+              <polyline points="88 136 112 160 168 104"/>
+            </svg>
+            <span class="icon-name">Check</span>
+          </div>
+          <!-- Globe -->
+          <div class="icon-cell">
+            <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="128" cy="128" r="96"/>
+              <ellipse cx="128" cy="128" rx="40" ry="96"/>
+              <line x1="32" y1="128" x2="224" y2="128"/>
+              <path d="M48 80h160M48 176h160"/>
+            </svg>
+            <span class="icon-name">Globe</span>
+          </div>
+          <!-- DeviceMobile -->
+          <div class="icon-cell">
+            <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="64" y="24" width="128" height="208" rx="16"/>
+              <line x1="64" y1="56" x2="192" y2="56"/>
+              <line x1="64" y1="200" x2="192" y2="200"/>
+              <circle cx="128" cy="220" r="4" fill="currentColor" stroke="none"/>
+            </svg>
+            <span class="icon-name">Mobile</span>
+          </div>
+          <!-- LinkBreak -->
+          <div class="icon-cell">
+            <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M104 80H64a48 48 0 000 96h40"/>
+              <path d="M152 80h40a48 48 0 010 96h-40"/>
+              <line x1="96" y1="128" x2="108" y2="128"/>
+              <line x1="148" y1="128" x2="160" y2="128"/>
+              <line x1="112" y1="56" x2="112" y2="32"/>
+              <line x1="144" y1="224" x2="144" y2="200"/>
+            </svg>
+            <span class="icon-name">Link Break</span>
+          </div>
+        </div>
+
+        <div class="dos-donts" style="margin-top: 56px;">
+          <div class="dodo do">
+            <h4>Do</h4>
+            <ul>
+              <li>Use 2px stroke consistently — never mix weights in the same surface.</li>
+              <li>Semi-fill with <em>SA Red at 12% opacity</em> for emphasis icons only (shield, check, warning, chat).</li>
+              <li>Align to the 24px grid with 2px padding (20px live area).</li>
+              <li>Use rounded joins and caps — matches Phosphor Regular out of the box.</li>
+            </ul>
+          </div>
+          <div class="dodo dont">
+            <h4>Don't</h4>
+            <ul>
+              <li>Use filled or bold-weight icons — too heavy for the brand's tone.</li>
+              <li>Mix icon libraries. Phosphor only — consistency beats variety.</li>
+              <li>Use red stroke — <em>red is for fill accents only</em>, never outlines.</li>
+              <li>Scale below 16px or above 48px in product UI.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 06c — Data Visualization ===== -->
+      <div class="mood-subsection">
+        <div class="sub-label">06c — Data Visualization</div>
+        <p class="photo-brief" style="margin-bottom: 8px;">
+          Stats should hit like headlines. Big numbers in JetBrains Mono 700, data labels in JetBrains Mono 400, charts minimal and flat. Dark cells for hero moments, light cells for supporting data. SA Red highlights the metric that matters — never decoration.
+        </p>
+
+        <div class="dataviz-bento">
+
+          <!-- Row 1 -->
+
+          <!-- 1. Big stat — solid SA Red -->
+          <div class="bento-cell red" style="position: relative;">
+            <div class="bento-corner tl invert" style="font-size: 14px;">↗</div>
+            <div class="bento-stat-mega" style="margin-top: auto; color: var(--ink);">4.2<span class="unit">M</span></div>
+            <div class="bento-meta" style="text-align: right; margin-left: auto; opacity: 0.95;">Scam reports<br>from the community</div>
+          </div>
+
+          <!-- 2. Editorial headline — light -->
+          <div class="bento-cell light" style="position: relative;">
+            <div class="bento-meta" style="font-family: var(--sans); font-size: 11px; line-height: 1.35;">Peer-Powered<br>Scam Detection<br>Network</div>
+            <div class="bento-editorial" style="margin-top: auto;">we<br>know<br>digital<span class="accent">/</span><br>bs.</div>
+            <div class="bento-corner br" style="font-size: 14px;">↗</div>
+          </div>
+
+          <!-- 3. Dark with sub-stats — A Trust Story -->
+          <div class="bento-cell dark" style="position: relative; gap: 12px;">
+            <div class="bento-editorial" style="font-size: clamp(22px, 2.6vw, 34px);">A trust<br>story.</div>
+            <div class="bento-corner bl red" style="font-size: 18px; bottom: auto; top: 50%; left: 24px; transform: translateY(-50%);">+</div>
+            <div class="bento-meta" style="position: absolute; top: 24px; right: 24px; max-width: 45%; text-align: left;">From paste<br>to verdict:<br>under a second.</div>
+            <div class="bento-substats" style="margin-top: auto;">
+              <div class="bento-substat red">
+                <span class="num">94%</span>
+                <span class="lbl">Score<br>accuracy</span>
+              </div>
+              <div class="bento-substat grey">
+                <span class="num">0.8s</span>
+                <span class="lbl">Median<br>response</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+
+          <!-- 4. Line chart — your digital bs detector -->
+          <div class="bento-cell light" style="position: relative;">
+            <div class="bento-editorial" style="font-size: clamp(20px, 2.4vw, 30px);">Your digital<br><span class="accent">bs/detector.</span></div>
+            <div class="bento-meta" style="margin-top: 8px;">Active checks · 30d</div>
+            <div style="flex: 1; position: relative; min-height: 90px; margin-top: 12px;">
+              <span class="bento-callout" style="position: absolute; top: 0; right: 0;">+23%</span>
+              <svg class="bento-line-svg" viewBox="0 0 320 110" preserveAspectRatio="none" style="position: absolute; inset: 18px 0 0 0; height: calc(100% - 18px);">
+                <defs>
+                  <linearGradient id="bentoLineArea" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#CC1417" stop-opacity="0.18"/>
+                    <stop offset="100%" stop-color="#CC1417" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0 88 C20 86, 35 80, 55 78 S90 70, 110 60 S140 55, 160 48 C180 42, 200 50, 220 38 S260 22, 280 14 S310 6, 318 4 L318 110 L0 110 Z" fill="url(#bentoLineArea)"/>
+                <path d="M0 88 C20 86, 35 80, 55 78 S90 70, 110 60 S140 55, 160 48 C180 42, 200 50, 220 38 S260 22, 280 14 S310 6, 318 4" stroke="#CC1417" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <circle cx="318" cy="4" r="3.5" fill="#CC1417"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- 5. Photo placeholder with red gradient -->
+          <div class="bento-cell bento-photo" style="padding: 0;">
+            <div class="ph-placeholder">photo · phone-in-hand</div>
+          </div>
+
+          <!-- 6. Bar chart — peer reports -->
+          <div class="bento-cell red" style="position: relative; color: var(--white);">
+            <div style="display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 0;">
+              <!-- Top bar: verified -->
+              <div>
+                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--white); opacity: 0.85; margin-bottom: 4px;">
+                  <span>VERIFIED</span><span>95%</span>
+                </div>
+                <div style="height: 22px; background: rgba(255,255,255,0.18); position: relative;">
+                  <div style="height: 100%; width: 95%; background: var(--ink);"></div>
+                </div>
+              </div>
+              <!-- Mid bar: pending -->
+              <div>
+                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--white); opacity: 0.85; margin-bottom: 4px;">
+                  <span>PENDING</span><span>55%</span>
+                </div>
+                <div style="height: 22px; background: rgba(255,255,255,0.18); position: relative;">
+                  <div style="height: 100%; width: 55%; background: rgba(26,26,26,0.55);"></div>
+                </div>
+              </div>
+              <!-- Total -->
+              <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; opacity: 0.85; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.25);">
+                <span>REPORTS</span>
+                <span>+2,341 today</span>
+              </div>
+            </div>
+            <div class="bento-editorial" style="font-size: clamp(18px, 2.2vw, 26px); margin-top: 14px; color: var(--ink);">Peer reports<br>that catch<br>what you'd<br>miss.</div>
+          </div>
+
+          <!-- Row 3 -->
+
+          <!-- 7. Triple stat — black -->
+          <div class="bento-cell dark" style="position: relative;">
+            <div class="bento-meta" style="opacity: 0.85; margin-bottom: 12px;">How does<br>ScamAdviser<br>compare?</div>
+            <div class="bento-stat-row">
+              <span class="num">+34%</span>
+              <span class="lbl">community growth</span>
+            </div>
+            <div class="bento-stat-row">
+              <span class="num">+89%</span>
+              <span class="lbl">verified reports</span>
+            </div>
+            <div class="bento-stat-row">
+              <span class="num">12<span style="font-size: 0.6em; color: var(--red); opacity: 0.7;">x</span></span>
+              <span class="lbl">faster verdict</span>
+            </div>
+            <div class="bento-corner br" style="font-size: 14px;">↗</div>
+          </div>
+
+          <!-- 8. Mega stat with pill — paper -->
+          <div class="bento-cell paper" style="position: relative;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+              <span class="bento-pill">$12M</span>
+              <div class="bento-corner red" style="position: relative; top: auto; right: auto; width: 40px; height: 40px; font-size: 20px; flex-shrink: 0;">+</div>
+            </div>
+            <div class="bento-editorial" style="font-size: clamp(20px, 2.4vw, 30px); text-align: left; margin-top: auto;">The peer-<br>powered<br><span class="accent">protection.</span></div>
+            <div class="bento-meta" style="align-self: flex-end; text-align: right; max-width: 60%; margin-top: 12px;">community<br>impact / year</div>
+          </div>
+
+          <!-- 9. Photo collage with italic headline — dark -->
+          <div class="bento-cell dark" style="position: relative; padding: 0; overflow: hidden;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(204,20,23,0.7) 0%, rgba(26,26,26,1) 70%);"></div>
+            <div style="position: absolute; top: 16px; right: 16px; width: 60%; height: 50%; background: linear-gradient(135deg, rgba(204,20,23,0.5), rgba(26,26,26,0.9)); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;">PHOTO</div>
+            <div style="position: absolute; bottom: 16px; left: 16px; width: 50%; height: 35%; background: linear-gradient(135deg, rgba(26,26,26,0.95), rgba(204,20,23,0.4)); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;">PHOTO</div>
+            <div class="bento-editorial" style="position: absolute; right: 24px; bottom: 24px; font-size: clamp(16px, 1.9vw, 22px); text-align: right; max-width: 60%; z-index: 2;"><span class="italic accent">Catch</span><br>what you'd<br>miss:<br>peer-powered<br>scam detection.</div>
+          </div>
+
+        </div>
+
+        <!-- ===== Chart Pattern Library ===== -->
+        <div class="chart-lib-heading">— Chart Pattern Library</div>
+        <div class="chart-lib-grid">
+
+          <!-- 1. Stat Tile -->
+          <div class="chart-pattern dark">
+            <div class="chart-pattern-label">01 · Stat Tile</div>
+            <div class="chart-pattern-canvas" style="justify-content: flex-start; flex-direction: column; align-items: flex-start; gap: 4px;">
+              <div style="font-family: var(--mono); font-weight: 700; font-size: 56px; letter-spacing: -0.04em; line-height: 0.95;">2.1<span style="color: var(--red); opacity: 0.7;">M</span></div>
+              <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; opacity: 0.5; text-transform: uppercase;">Active users · monthly</div>
+            </div>
+            <div class="chart-pattern-use">Hero metric. One number that defines the screen. Always JetBrains Mono 700.</div>
+          </div>
+
+          <!-- 2. Trust Score Gauge -->
+          <div class="chart-pattern">
+            <div class="chart-pattern-label">02 · Trust Score Gauge</div>
+            <div class="chart-pattern-canvas">
+              <svg viewBox="0 0 220 160" style="max-width: 240px; max-height: 160px;">
+                <!-- 5 risk-ladder arcs -->
+                <path d="M 20 110 A 90 90 0 0 1 47 47" stroke="#EE3E41" stroke-width="14" fill="none"/>
+                <path d="M 47 47 A 90 90 0 0 1 84 22" stroke="#FF6712" stroke-width="14" fill="none"/>
+                <path d="M 84 22 A 90 90 0 0 1 136 22" stroke="#FF8A00" stroke-width="14" fill="none"/>
+                <path d="M 136 22 A 90 90 0 0 1 173 47" stroke="#63B100" stroke-width="14" fill="none"/>
+                <path d="M 173 47 A 90 90 0 0 1 200 110" stroke="#00A67E" stroke-width="14" fill="none"/>
+                <!-- Scale anchors -->
+                <text x="20" y="128" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1A1A1A" opacity="0.4" letter-spacing="0.06em">0</text>
+                <text x="200" y="128" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1A1A1A" opacity="0.4" letter-spacing="0.06em">100</text>
+                <!-- Needle pointing at 92: angle = 180° × (1 − 92/100) = 14.4° from horizontal right -->
+                <line x1="110" y1="110" x2="187.2" y2="89.7" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="110" cy="110" r="6" fill="#1A1A1A"/>
+                <circle cx="110" cy="110" r="2.2" fill="#FFFFF8"/>
+                <!-- Score label, clear of pivot -->
+                <text x="110" y="152" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="22" fill="#1A1A1A" letter-spacing="-0.04em">92<tspan font-size="12" fill="#00A67E" letter-spacing="0" font-weight="500">/100</tspan></text>
+              </svg>
+            </div>
+            <div class="chart-pattern-use">Trust score readout. Risk-ladder colors required — never substitute SA Red.</div>
+          </div>
+
+          <!-- 3. Risk Distribution -->
+          <div class="chart-pattern">
+            <div class="chart-pattern-label">03 · Risk Distribution</div>
+            <div class="chart-pattern-canvas" style="flex-direction: column; gap: 12px; align-items: stretch;">
+              <div style="display: flex; height: 28px; width: 100%;">
+                <div style="flex: 8; background: #EE3E41;"></div>
+                <div style="flex: 12; background: #FF6712;"></div>
+                <div style="flex: 14; background: #FF8A00;"></div>
+                <div style="flex: 31; background: #63B100;"></div>
+                <div style="flex: 35; background: #00A67E;"></div>
+              </div>
+              <div style="display: flex; font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; opacity: 0.6; justify-content: space-between;">
+                <span>8% danger</span>
+                <span>26% caution</span>
+                <span>66% safe</span>
+              </div>
+            </div>
+            <div class="chart-pattern-use">Population breakdown across risk bands. Always 5-segment, always horizontal.</div>
+          </div>
+
+          <!-- 4. Trend Line -->
+          <div class="chart-pattern">
+            <div class="chart-pattern-label">04 · Trend Line</div>
+            <div class="chart-pattern-canvas">
+              <svg viewBox="0 0 280 120" preserveAspectRatio="none" style="width: 100%; height: 120px;">
+                <defs><linearGradient id="trendArea" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#CC1417" stop-opacity="0.18"/><stop offset="100%" stop-color="#CC1417" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0 95 C30 90, 50 88, 80 75 S140 50, 170 42 S230 22, 280 12 L280 120 L0 120 Z" fill="url(#trendArea)"/>
+                <path d="M0 95 C30 90, 50 88, 80 75 S140 50, 170 42 S230 22, 280 12" stroke="#CC1417" stroke-width="2.5" fill="none"/>
+                <circle cx="280" cy="12" r="4" fill="#CC1417"/>
+              </svg>
+            </div>
+            <div class="chart-pattern-use">Single-metric over time. SA Red line + soft red area. No gridlines.</div>
+          </div>
+
+          <!-- 5. Sparkline -->
+          <div class="chart-pattern">
+            <div class="chart-pattern-label">05 · Sparkline</div>
+            <div class="chart-pattern-canvas" style="flex-direction: column; gap: 8px; align-items: flex-start;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-family: var(--mono); font-weight: 700; font-size: 22px; letter-spacing: -0.02em;">+34%</span>
+                <svg viewBox="0 0 80 24" style="width: 80px; height: 24px;"><path d="M0 20 L10 18 L20 14 L30 16 L40 10 L50 12 L60 6 L70 8 L80 2" stroke="#CC1417" stroke-width="1.5" fill="none"/></svg>
+              </div>
+              <span style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; opacity: 0.5; text-transform: uppercase;">YoY · 12 months</span>
+            </div>
+            <div class="chart-pattern-use">Inline trend next to a stat. No axis labels — context only.</div>
+          </div>
+
+          <!-- 6. Comparison Bars -->
+          <div class="chart-pattern">
+            <div class="chart-pattern-label">06 · Comparison Bars</div>
+            <div class="chart-pattern-canvas" style="flex-direction: column; gap: 10px; align-items: stretch;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; opacity: 0.6; margin-bottom: 4px;"><span>REPORTED</span><span style="color: var(--ink);">2,341</span></div>
+                <div style="height: 10px; background: rgba(0,0,0,0.08);"><div style="height: 100%; width: 100%; background: #1A1A1A;"></div></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; opacity: 0.6; margin-bottom: 4px;"><span>VERIFIED</span><span style="color: var(--red);">2,083</span></div>
+                <div style="height: 10px; background: rgba(0,0,0,0.08);"><div style="height: 100%; width: 89%; background: #CC1417;"></div></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; opacity: 0.6; margin-bottom: 4px;"><span>DISPUTED</span><span style="opacity: 0.6;">258</span></div>
+                <div style="height: 10px; background: rgba(0,0,0,0.08);"><div style="height: 100%; width: 11%; background: rgba(0,0,0,0.4);"></div></div>
+              </div>
+            </div>
+            <div class="chart-pattern-use">Two- or three-way breakdown. Ink for total, SA Red for the metric that matters.</div>
+          </div>
+
+        </div>
+
+        <!-- ===== Do / Don't for Data Viz ===== -->
+        <div class="dos-donts" style="margin-top: 56px;">
+          <div class="dodo do">
+            <h4>Do</h4>
+            <ul>
+              <li>Round numbers. <em>2.1M</em> beats <em>2,143,892</em>. Receipts, not noise.</li>
+              <li>One accent color per chart. Pick the metric, kill the rest.</li>
+              <li>Numbers always JetBrains Mono. Headlines and labels can be Inter.</li>
+              <li>Flat charts. No 3D, no shadows, no bevels — soft area fills are the only gradient allowed.</li>
+              <li>Inline labels over legends. If a label fits next to the bar, skip the legend.</li>
+            </ul>
+          </div>
+          <div class="dodo dont">
+            <h4>Don't</h4>
+            <ul>
+              <li>Use <em>Risk Ladder colors</em> for non-risk data. Green is "safe," not "growth." Red is "danger," not "delta."</li>
+              <li>Pie charts for &gt; 3 slices. Use a horizontal stacked bar instead — easier to compare.</li>
+              <li>Rainbow palettes. If you need 6 colors, you're showing too much in one chart.</li>
+              <li>Decorate with chart junk. Gridlines, borders, drop shadows — kill them.</li>
+              <li>Over-precise digits. <em>94.7384%</em> reads like a B2B deck. <em>94%</em> reads like a brand.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
