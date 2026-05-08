@@ -101,10 +101,10 @@
     transition: border-color 0.2s;
   }
   .login-gate .login-input:focus {
-    border-color: rgba(255,255,255,0.4);
+    border-color: rgba(255,255,255,0.7);
   }
   .login-gate .login-input::placeholder {
-    color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.62);
   }
   .login-gate .login-btn {
     width: 100%;
@@ -139,7 +139,7 @@
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.6;
+    opacity: 0.78;
   }
   .section-label {
     display: inline-flex;
@@ -157,7 +157,7 @@
     width: 32px;
     height: 1px;
     background: currentColor;
-    opacity: 0.5;
+    opacity: 0.72;
   }
   .grain {
     position: absolute; inset: 0;
@@ -188,7 +188,7 @@
     z-index: 10;
     color: var(--ink);
   }
-  .nav > div:not(.logo-mark) { opacity: 0.6; }
+  .nav > div:not(.logo-mark) { opacity: 0.78; }
   .logo-mark { display: flex; align-items: center; }
   .logo-svg { display: block; height: 32px; width: auto; }
   .logo-svg svg { height: 32px; width: auto; display: block; }
@@ -228,7 +228,7 @@
     font-size: 16px;
     letter-spacing: -0.01em;
   }
-  .hero-search .hs-placeholder { color: rgba(0,0,0,0.42); }
+  .hero-search .hs-placeholder { color: rgba(0,0,0,0.62); }
   .hero-search .hs-caret {
     width: 2px; height: 22px;
     background: var(--red);
@@ -255,7 +255,7 @@
     background: transparent;
     border: none;
     border-radius: 10px;
-    color: rgba(0,0,0,0.5);
+    color: rgba(0,0,0,0.7);
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
   }
@@ -305,7 +305,7 @@
     font-size: 10px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.65;
+    opacity: 0.82;
   }
   .sp-head .live { display: flex; align-items: center; gap: 8px; }
   .sp-head .live .dot {
@@ -346,7 +346,7 @@
     font-size: 34px; font-weight: 900; color: var(--signal-red);
     letter-spacing: -0.05em; line-height: 1; text-align: center;
   }
-  .sp-verdict .lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55; }
+  .sp-verdict .lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.78; }
   .sp-verdict .v { font-size: 15px; font-weight: 700; letter-spacing: -0.015em; margin-top: 2px; color: var(--signal-red); }
   .sp-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; padding-left: 48px; }
   .sp-chip {
@@ -367,14 +367,14 @@
   }
   .sp-input .caret { width: 2px; height: 14px; background: var(--signal-red); animation: blink 1s infinite; }
   @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
-  .sp-input .ph { font-size: 13px; opacity: 0.5; flex: 1; }
-  .sp-input .send { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; }
+  .sp-input .ph { font-size: 13px; opacity: 0.72; flex: 1; }
+  .sp-input .send { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.72; }
   .hero-label {
     font-family: var(--mono);
     font-size: 14px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--signal-red);
+    color: var(--red);
     display: flex; align-items: center; gap: 14px;
   }
   .hero-label .dot {
@@ -384,7 +384,7 @@
   }
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(1.5); }
+    50% { opacity: 0.82; transform: scale(1.5); }
   }
   .hero h1 {
     font-family: var(--sans);
@@ -445,7 +445,7 @@
     font-size: 14px;
     letter-spacing: 0.1em;
     line-height: 1.9;
-    color: rgba(0,0,0,0.45);
+    color: rgba(0,0,0,0.65);
     text-transform: uppercase;
   }
   .hero-meta strong { color: var(--ink); font-weight: 600; }
@@ -457,7 +457,7 @@
     white-space: nowrap;
     font-family: var(--mono);
     font-size: 12px;
-    color: rgba(0,0,0,0.35);
+    color: rgba(0,0,0,0.6);
     padding: 12px 0;
     border-top: 1px solid rgba(0,0,0,0.08);
     border-bottom: 1px solid rgba(0,0,0,0.08);
@@ -511,7 +511,7 @@
     font-size: 9px;
     letter-spacing: 0.3em;
     writing-mode: vertical-rl;
-    opacity: 0.5;
+    opacity: 0.72;
   }
   .pivot-col .tag { display: none; }
   .pivot-col h3 {
@@ -527,7 +527,7 @@
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.55;
+    opacity: 0.78;
     margin-bottom: 10px;
     line-height: 1.2;
   }
@@ -546,7 +546,7 @@
     border-top: 1px solid currentColor;
     opacity: 1;
   }
-  .pivot-col.new .quote { border-color: rgba(255,255,255,0.3); }
+  .pivot-col.new .quote { border-color: rgba(255,255,255,0.62); }
 
   .essence h2 {
     font-size: clamp(40px, 6vw, 72px);
@@ -589,7 +589,7 @@
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 0.08em;
-    opacity: 0.4;
+    opacity: 0.82;
   }
   .pillar h4 {
     font-size: 28px;
@@ -666,7 +666,7 @@
     justify-content: center;
     line-height: 1.4;
   }
-  .ratio-seg .label-stack span:last-child { opacity: 0.6; text-transform: none; letter-spacing: 0; font-family: var(--sans); font-size: 13px; }
+  .ratio-seg .label-stack span:last-child { opacity: 0.78; text-transform: none; letter-spacing: 0; font-family: var(--sans); font-size: 13px; }
 
   .color-grid {
     display: grid;
@@ -689,7 +689,7 @@
   }
   .swatch .name { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
   .swatch .hex { font-size: 11px; letter-spacing: 0.05em; opacity: 0.7; }
-  .swatch .role { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; }
+  .swatch .role { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.72; }
 
   .risk-ladder {
     margin-top: 96px;
@@ -706,7 +706,7 @@
     display: flex;
     justify-content: space-between;
   }
-  .risk-ladder h3 .meta { opacity: 0.5; }
+  .risk-ladder h3 .meta { opacity: 0.72; }
   .ladder-row {
     display: grid;
     grid-template-columns: 60px 200px 1fr 120px;
@@ -720,7 +720,7 @@
     font-weight: 700;
     font-size: 18px;
     text-align: center;
-    color: var(--white);
+    color: var(--ink);
   }
   .ladder-label {
     padding: 20px;
@@ -741,7 +741,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-align: right;
-    opacity: 0.6;
+    opacity: 0.78;
   }
 
   /* ============ TYPE ============ */
@@ -761,7 +761,7 @@
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.45;
+    opacity: 0.7;
     margin-bottom: 12px;
   }
   .type-display {
@@ -796,7 +796,7 @@
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 0.1em;
-    opacity: 0.45;
+    opacity: 0.7;
   }
   .type-weight-row .w-text {
     font-size: 28px;
@@ -824,13 +824,13 @@
     font-size: 10px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    opacity: 0.4;
+    opacity: 0.82;
     line-height: 1.6;
   }
   .h-headline { font-size: 44px; font-weight: 800; letter-spacing: -0.035em; line-height: 1; }
   .h-subhead { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
   .h-body { font-size: 16px; font-weight: 400; line-height: 1.5; }
-  .h-mono { font-family: var(--mono); font-size: 14px; letter-spacing: 0.02em; color: var(--signal-red); }
+  .h-mono { font-family: var(--mono); font-size: 14px; letter-spacing: 0.02em; color: var(--red); }
 
   /* ============ VOICE ============ */
   .voice {
@@ -891,7 +891,7 @@
     font-family: var(--mono);
     font-size: 9px;
     letter-spacing: 0.15em;
-    opacity: 0.3;
+    opacity: 0.62;
   }
   .tone-row .b2c {
     font-size: 19px;
@@ -932,14 +932,14 @@
     margin-bottom: 24px;
     display: flex; align-items: center; gap: 10px;
   }
-  .dodo.do h4::before { content: '✓'; color: var(--trust-blue); font-size: 16px; }
-  .dodo.dont h4::before { content: '×'; color: var(--signal-red); font-size: 20px; }
+  .dodo.do h4::before { content: '✓'; color: var(--trust-blue); font-size: 28px; line-height: 1; font-weight: 700; }
+  .dodo.dont h4::before { content: '×'; color: var(--signal-red); font-size: 36px; line-height: 1; font-weight: 700; }
   .dodo ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
   .dodo li { font-size: 16px; line-height: 1.4; padding-left: 20px; position: relative; }
   .dodo li::before {
     content: '—';
     position: absolute; left: 0;
-    opacity: 0.4;
+    opacity: 0.82;
   }
   .dodo li em {
     font-family: var(--mono);
@@ -951,7 +951,7 @@
     color: var(--ink);
     border-radius: 2px;
   }
-  .dodo.dont li em { background: rgba(238,62,65,0.08); color: var(--signal-red); }
+  .dodo.dont li em { background: rgba(238,62,65,0.16); color: #9A0E10; }
 
   /* ============ MOODBOARD ============ */
   .moodboard {
@@ -1051,7 +1051,7 @@
   .photo-heads .no h4 { color: var(--signal-red); }
   .photo-heads ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
   .photo-heads li { font-size: 15px; line-height: 1.5; }
-  .photo-heads li::before { content: '— '; opacity: 0.5; }
+  .photo-heads li::before { content: '— '; opacity: 0.72; }
 
   /* ---- Visual Language sub-sections ---- */
   .mood-subsection {
@@ -1069,7 +1069,7 @@
     font-size: 12px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.72;
     margin-bottom: 24px;
   }
   .photo-brief {
@@ -1107,7 +1107,7 @@
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.35;
+    opacity: 0.62;
     max-width: 140px;
   }
 
@@ -1126,7 +1126,7 @@
     font-size: 10px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.45;
+    opacity: 0.7;
     font-weight: 400;
     margin-bottom: 4px;
   }
@@ -1158,11 +1158,10 @@
     font-size: 9px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    opacity: 0.4;
+    opacity: 0.82;
   }
   .icon-cell.accent svg .accent-fill {
-    fill: var(--red);
-    fill-opacity: 0.12;
+    fill: none;
   }
 
   /* ---- Data Visualization bento grid ---- */
@@ -1204,6 +1203,7 @@
     text-transform: uppercase;
   }
   .bento-editorial .accent { color: var(--red); }
+  .bento-cell.dark .bento-editorial .accent { color: var(--signal-red); }
   .bento-editorial .italic { font-style: italic; font-weight: 800; }
   .bento-meta {
     font-family: var(--sans);
@@ -1300,7 +1300,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.7);
     font-family: var(--mono);
     font-size: 10px;
     letter-spacing: 0.15em;
@@ -1348,7 +1348,7 @@
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.72;
   }
   .bento-cell .bento-stat {
     font-family: var(--mono);
@@ -1371,13 +1371,13 @@
   .bento-cell.dark .bento-stat .accent,
   .bento-cell.red .bento-stat .accent {
     color: var(--white);
-    opacity: 0.5;
+    opacity: 0.72;
   }
   .bento-cell .bento-desc {
     font-size: 13px;
     font-family: var(--mono);
     letter-spacing: 0.04em;
-    opacity: 0.6;
+    opacity: 0.78;
     margin-top: 8px;
   }
   .bento-cell .bento-headline {
@@ -1425,7 +1425,7 @@
     font-size: 11px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.72;
   }
   .chart-lib-grid {
     display: grid;
@@ -1451,7 +1451,7 @@
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.72;
   }
   .chart-pattern-canvas {
     flex: 1;
@@ -1513,7 +1513,7 @@
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 0.04em;
-    opacity: 0.6;
+    opacity: 0.78;
     margin-top: 16px;
     padding-top: 12px;
     border-top: 1px solid rgba(0,0,0,0.08);
@@ -1536,7 +1536,7 @@
     letter-spacing: -0.035em;
   }
   .ui-section .ui-intro {
-    font-size: 18px; opacity: 0.6; max-width: 640px;
+    font-size: 18px; opacity: 0.78; max-width: 640px;
     line-height: 1.5;
     margin-top: 20px;
   }
@@ -1566,7 +1566,7 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     margin-bottom: 8px;
-    opacity: 0.5;
+    opacity: 0.72;
     color: var(--ink);
   }
   .ui-card .title {
@@ -1654,13 +1654,13 @@
     font-size: 9px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.6;
+    opacity: 0.78;
     margin-bottom: 2px;
   }
   .ext-score .info .verdict {
     font-size: 14px;
     font-weight: 700;
-    color: var(--signal-red);
+    color: var(--red);
     letter-spacing: -0.01em;
   }
   .ext-reasons { display: flex; flex-direction: column; gap: 8px; }
@@ -1767,7 +1767,7 @@
     font-family: var(--sans);
     font-weight: 800;
     font-size: 15px;
-    color: white;
+    color: var(--ink);
     letter-spacing: -0.04em;
   }
   .score-badge.danger { background: var(--signal-red); }
@@ -1796,9 +1796,9 @@
     text-transform: uppercase;
     font-weight: 500;
   }
-  .tag.dd { background: rgba(238,62,65,0.1); color: var(--signal-red); }
-  .tag.ww { background: rgba(255,138,0,0.12); color: var(--warn-orange); }
-  .tag.ss { background: rgba(0,166,126,0.12); color: var(--safe-green); }
+  .tag.dd { background: rgba(238,62,65,0.14); color: #9A0E10; }
+  .tag.ww { background: rgba(255,138,0,0.18); color: #8A3700; }
+  .tag.ss { background: rgba(0,166,126,0.16); color: #005C45; }
   .tag.ll { background: rgba(99,177,0,0.12); color: var(--likely-safe); }
 
   .phone-cta {
@@ -1842,7 +1842,7 @@
     display: flex; justify-content: space-between;
     box-shadow: 0 -1px 2px rgba(0,0,0,0.04);
   }
-  .phone-tab .t { font-size: 10px; opacity: 0.4; font-weight: 600; }
+  .phone-tab .t { font-size: 10px; opacity: 0.82; font-weight: 600; }
   .phone-tab .t.active { opacity: 1; color: var(--red); }
 
   .ui-score { grid-column: span 7; }
@@ -1871,7 +1871,7 @@
     font-size: 10px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.72;
     margin-bottom: 4px;
   }
   .score-big {
@@ -1884,7 +1884,7 @@
   .score-big .denom {
     font-size: 32px;
     color: var(--gray);
-    opacity: 0.5;
+    opacity: 0.72;
     font-weight: 700;
     letter-spacing: -0.04em;
     margin-left: 8px;
@@ -1930,7 +1930,7 @@
     font-size: 10px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.72;
     margin-bottom: 16px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -1968,7 +1968,7 @@
   .ui-social { grid-column: span 4; }
   .social-card {
     width: 270px; height: 480px;
-    background: var(--signal-red);
+    background: var(--red);
     color: var(--white);
     border-radius: 18px;
     padding: 22px;
@@ -2125,14 +2125,14 @@
     text-transform: uppercase;
     white-space: nowrap;
   }
-  .verdict.scam { background: rgba(238,62,65,0.1); color: var(--signal-red); }
-  .verdict.legit { background: rgba(0,166,126,0.1); color: var(--safe-green); }
+  .verdict.scam { background: rgba(238,62,65,0.16); color: #9A0E10; }
+  .verdict.legit { background: rgba(0,166,126,0.16); color: #005C45; }
 
   .ui-safe { grid-column: span 4; }
   .safe-card {
     width: 100%;
     background: var(--safe-green);
-    color: white;
+    color: var(--ink);
     border-radius: 14px;
     padding: 32px 28px;
     min-height: 340px;
@@ -2182,7 +2182,7 @@
     letter-spacing: -0.065em;
     line-height: 0.85;
   }
-  .safe-card .score-line .d { font-family: var(--mono); font-size: 14px; opacity: 0.6; }
+  .safe-card .score-line .d { font-family: var(--mono); font-size: 14px; opacity: 0.85; }
 
   /* ============ CLOSE ============ */
   .close {
@@ -2204,7 +2204,7 @@
     max-width: 600px; margin: 32px auto 0;
     font-size: 18px;
     line-height: 1.5;
-    opacity: 0.6;
+    opacity: 0.78;
   }
   .close-foot {
     margin-top: 120px;
@@ -2215,7 +2215,7 @@
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.4;
+    opacity: 0.82;
   }
 
   /* ============ STICKY MINI-NAV ============ */
@@ -2250,7 +2250,7 @@
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.02em;
-    opacity: 0.35;
+    opacity: 0.62;
     transition: opacity 0.18s, transform 0.18s, background 0.18s;
     position: relative;
   }
@@ -2295,7 +2295,7 @@
     max-width: 900px;
   }
   .logo-usage h2 em { font-style: italic; font-weight: 300; }
-  .logo-usage .intro { font-size: 18px; opacity: 0.65; max-width: 640px; margin-top: 16px; line-height: 1.5; }
+  .logo-usage .intro { font-size: 18px; opacity: 0.82; max-width: 640px; margin-top: 16px; line-height: 1.5; }
   .lockup-grid {
     margin-top: 64px;
     display: grid;
@@ -2318,7 +2318,7 @@
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.85;
   }
   .lockup .lk-name {
     font-family: var(--sans);
@@ -2355,7 +2355,7 @@
     font-size: 10px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.55;
+    opacity: 0.78;
     margin-top: 8px;
   }
   .clear-space {
@@ -2401,7 +2401,7 @@
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.72;
     margin-bottom: 12px;
   }
   .cs-copy h4 {
@@ -2414,7 +2414,376 @@
   .cs-copy p { font-size: 15px; line-height: 1.55; opacity: 0.75; }
   .cs-copy ul { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
   .cs-copy li { font-size: 14px; line-height: 1.45; padding-left: 18px; position: relative; }
-  .cs-copy li::before { content: '—'; position: absolute; left: 0; opacity: 0.4; }
+  .cs-copy li::before { content: '—'; position: absolute; left: 0; opacity: 0.82; }
+
+  /* ============ DESIGN SYSTEM ============ */
+  .system-section {
+    background: var(--white);
+    color: var(--ink);
+  }
+  .system-section h2 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    max-width: 980px;
+  }
+  .system-section h2 .red { color: var(--red); }
+  .system-section .intro {
+    font-size: 18px; opacity: 0.78; max-width: 640px;
+    line-height: 1.5; margin-top: 20px;
+  }
+  .ds-grid {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+  }
+  .ds-block {
+    background: var(--paper);
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 340px;
+  }
+  .ds-block.span-4 { grid-column: span 4; }
+  .ds-block.span-6 { grid-column: span 6; }
+  .ds-block.span-8 { grid-column: span 8; }
+  .ds-block.span-12 { grid-column: span 12; }
+  .ds-block.dark { background: var(--ink); color: var(--white); border-color: var(--ink); }
+  .ds-block.white { background: var(--white); }
+  .ds-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.72;
+  }
+  .ds-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+  .ds-block.dark .ds-title { color: var(--white); }
+  .ds-desc {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.6;
+    opacity: 0.7;
+  }
+  .ds-rule {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    opacity: 0.78;
+  }
+  .ds-block.dark .ds-rule { border-top-color: rgba(255,255,255,0.12); }
+
+  /* Buttons */
+  .ds-btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .ds-spec-table {
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin-top: 12px;
+  }
+  .ds-spec-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 1.4fr 1.2fr;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .ds-spec-row.head {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
+  .ds-spec-row.head > span {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .ds-spec-row .var {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .ds-spec-row .var .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 8px; vertical-align: middle; background: var(--red); }
+  .ds-spec-row .sample { display: flex; }
+  .ds-spec-row .use {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.4;
+    opacity: 0.75;
+  }
+  .ds-spec-row .token {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    opacity: 0.78;
+  }
+  .ds-spec-table.compact .ds-spec-row { grid-template-columns: 80px 1fr 1fr 1fr; padding: 14px 0; }
+  @media (max-width: 760px) {
+    .ds-spec-row,
+    .ds-spec-table.compact .ds-spec-row { grid-template-columns: 100px 1fr; row-gap: 8px; }
+    .ds-spec-row .use, .ds-spec-row .token { grid-column: 1 / -1; }
+    .ds-spec-row.head .use, .ds-spec-row.head .token { display: none; }
+  }
+  .sa-btn {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: -0.005em;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), background 200ms ease, color 200ms ease;
+    display: inline-flex; align-items: center; gap: 8px;
+    line-height: 1;
+  }
+  .sa-btn.primary { background: var(--red); color: var(--white); border-color: var(--red); }
+  .sa-btn.primary:hover { background: #B0100F; transform: translateY(-1px); }
+  .sa-btn.secondary { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .sa-btn.secondary:hover { background: var(--ink); color: var(--white); }
+  .sa-btn.ghost { background: transparent; color: var(--ink); border-color: transparent; padding-left: 8px; padding-right: 8px; }
+  .sa-btn.ghost:hover { color: var(--red); }
+  .sa-btn.dark-pri { background: var(--white); color: var(--ink); border-color: var(--white); }
+  .sa-btn.dark-pri:hover { background: var(--paper); }
+  .sa-btn.danger { background: var(--ink); color: var(--white); border-color: var(--ink); }
+  .sa-btn.danger:hover { background: var(--red); border-color: var(--red); }
+  .sa-btn.sm { font-size: 12px; padding: 8px 16px; }
+  .sa-btn.lg { font-size: 16px; padding: 16px 32px; }
+  .sa-btn .arrow { transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .sa-btn:hover .arrow { transform: translateX(3px); }
+
+  /* Radius scale */
+  .ds-radius-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
+  .ds-radius-row.head {
+    display: grid;
+    grid-template-columns: 96px 110px 1fr 1.1fr;
+    gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.78;
+  }
+  .ds-radius-row.head > span { line-height: 1.2; }
+  .ds-radius-item {
+    display: grid;
+    grid-template-columns: 96px 110px 1fr 1.1fr;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .ds-radius-item:last-child { border-bottom: none; }
+  .ds-radius-chip {
+    width: 80px;
+    height: 80px;
+    background: var(--white);
+    color: var(--ink);
+  }
+  .ds-radius-item .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--mono);
+    line-height: 1;
+  }
+  .ds-radius-item .meta .v {
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .ds-radius-item .meta .n {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.78;
+    line-height: 1.3;
+  }
+  .ds-radius-use {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.92;
+  }
+  .ds-radius-where {
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.55;
+    opacity: 0.78;
+  }
+  @media (max-width: 760px) {
+    .ds-radius-row.head, .ds-radius-item {
+      grid-template-columns: 80px 1fr;
+      row-gap: 8px;
+    }
+    .ds-radius-row.head .h-use, .ds-radius-row.head .h-where { display: none; }
+    .ds-radius-use, .ds-radius-where { grid-column: 1 / -1; }
+  }
+
+  /* Spacing scale */
+  .ds-spacing-stack { display: flex; flex-direction: column; gap: 12px; }
+  .ds-spacing-row {
+    display: grid;
+    grid-template-columns: 56px 1fr 60px;
+    gap: 16px;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .ds-spacing-row .lbl { opacity: 0.78; letter-spacing: 0.06em; }
+  .ds-spacing-row .bar { height: 14px; background: var(--ink); }
+  .ds-spacing-row .val { text-align: right; font-weight: 700; letter-spacing: -0.02em; }
+
+  /* Motion */
+  .ds-motion-row { display: flex; flex-direction: column; gap: 18px; margin-top: 4px; }
+  .ds-motion-track {
+    position: relative;
+    height: 36px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    overflow: hidden;
+  }
+  .ds-motion-dot {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+  .ds-motion-dot.demo-fast { animation: ds-slide 1.4s 120ms cubic-bezier(0.2, 0.8, 0.2, 1) infinite alternate; }
+  .ds-motion-dot.demo-base { animation: ds-slide 1.4s 200ms cubic-bezier(0.2, 0.8, 0.2, 1) infinite alternate; }
+  .ds-motion-dot.demo-slow { animation: ds-slide 1.4s 320ms cubic-bezier(0.4, 0, 0.2, 1) infinite alternate; }
+  @keyframes ds-slide {
+    0%   { left: 8px; }
+    100% { left: calc(100% - 30px); }
+  }
+  .ds-motion-meta {
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.06em; opacity: 0.7; margin-top: 6px;
+  }
+
+  /* Iconography */
+  .ds-icon-grid { display: flex; gap: 14px; flex-wrap: wrap; }
+  .ds-icon-cell {
+    flex: 1;
+    min-width: 70px;
+    aspect-ratio: 1 / 1;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ds-icon-cell svg { width: 28px; height: 28px; }
+  .ds-icon-spec {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px;
+    font-family: var(--mono); font-size: 11px;
+    margin-top: 8px;
+  }
+  .ds-icon-spec dt { opacity: 0.78; letter-spacing: 0.06em; }
+  .ds-icon-spec dd { font-weight: 700; letter-spacing: -0.02em; text-align: right; }
+
+  /* Elevation */
+  .ds-elev-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 28px;
+    padding: 28px 16px 36px;
+    margin: 4px -16px 0;
+  }
+  .ds-elev-card {
+    height: 130px;
+    background: var(--white);
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 18px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+  .ds-elev-card .v { font-weight: 700; font-size: 14px; letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; color: var(--ink); }
+  .ds-elev-card.e0 { box-shadow: none; border: 1px solid rgba(0,0,0,0.08); }
+  .ds-elev-card.e1 { box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04); }
+  .ds-elev-card.e2 { box-shadow: 0 8px 24px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.05); }
+  .ds-elev-card.e3 { box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.08); }
+
+  /* Highlight */
+  .ds-highlight-demo {
+    display: flex; flex-direction: column; gap: 18px;
+    padding: 28px; background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08);
+    margin-top: 4px;
+  }
+  .ds-highlight-demo p {
+    font-family: var(--sans); font-size: 16px; line-height: 1.55; color: var(--ink);
+    margin: 0;
+  }
+  .ds-highlight-demo .mono {
+    font-family: var(--mono); font-size: 14px; letter-spacing: -0.01em;
+  }
+  .ds-highlight-demo mark {
+    background: rgba(204,20,23,0.18);
+    color: var(--ink);
+    padding: 1px 4px;
+    border-radius: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .ds-highlight-demo mark.solid {
+    background: var(--red);
+    color: var(--white);
+  }
+  .ds-highlight-demo .label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    opacity: 0.7; margin-bottom: -4px;
+  }
+
+  /* Field / input */
+  .ds-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(0,0,0,0.18);
+    background: var(--white);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink);
+    border-radius: 4px;
+  }
+  .ds-input:focus { outline: 2px solid var(--red); outline-offset: 2px; border-color: var(--ink); }
+  .ds-input-row { display: flex; flex-direction: column; gap: 6px; }
+  .ds-input-row label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.78; }
+
+  @media (max-width: 900px) {
+    .ds-block.span-4, .ds-block.span-6, .ds-block.span-8 { grid-column: span 12; }
+  }
 
   /* ============ TAGLINE SYSTEM ============ */
   .taglines { background: var(--ink); color: var(--white); }
@@ -2427,7 +2796,7 @@
     max-width: 1000px;
   }
   .taglines h2 em { font-style: italic; font-weight: 300; color: var(--french-gray); }
-  .taglines .intro { font-size: 18px; opacity: 0.55; max-width: 640px; margin-top: 16px; line-height: 1.5; }
+  .taglines .intro { font-size: 18px; opacity: 0.78; max-width: 640px; margin-top: 16px; line-height: 1.5; }
   .tagline-grid {
     margin-top: 64px;
     display: grid;
@@ -2453,7 +2822,7 @@
     text-transform: lowercase;
   }
   .tagline-main .big .slash { color: var(--ink); display: inline-block; transform: skewX(-10deg); margin: 0 0.02em; }
-  .tagline-main .note { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; opacity: 0.75; line-height: 1.5; max-width: 320px; }
+  .tagline-main .note { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; opacity: 0.88; line-height: 1.5; max-width: 320px; }
   .tagline-list { display: flex; flex-direction: column; }
   .tag-row {
     padding: 28px 32px;
@@ -2465,7 +2834,7 @@
     gap: 8px;
   }
   .tag-row:last-child { border-bottom: 0; }
-  .tag-row .ctx { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.5; }
+  .tag-row .ctx { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.72; }
   .tag-row .line {
     font-size: 22px;
     font-weight: 600;
@@ -2486,7 +2855,7 @@
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.72;
   }
   .tier-head h3 {
     font-size: 32px;
@@ -2496,7 +2865,7 @@
   }
   .tier-head .note {
     font-size: 13px;
-    opacity: 0.6;
+    opacity: 0.78;
     margin-left: auto;
     max-width: 360px;
     text-align: right;
@@ -2568,7 +2937,8 @@
     <a href="#voice"    data-section="voice"    data-label="05 · Voice">05</a>
     <a href="#mood"     data-section="mood"     data-label="06 · Visual">06</a>
     <a href="#ui"       data-section="ui"       data-label="07 · UI">07</a>
-    <a href="#taglines" data-section="taglines" data-label="08 · Taglines">08</a>
+    <a href="#system"   data-section="system"   data-label="08 · System">08</a>
+    <a href="#taglines" data-section="taglines" data-label="09 · Taglines">09</a>
   </nav>
 
   <!-- ============ HERO ============ -->
@@ -2576,7 +2946,7 @@
     <div class="grain"></div>
     <div class="nav">
       <div class="logo-mark"><div class="logo-svg"><img src="project/assets/sa-logo.png" alt="ScamAdviser" style="height:28px;width:auto;display:block;"></div></div>
-      <div>Brand Exploration · B2C Pivot · Rev. 04.2026</div>
+      <div>Brand Exploration · B2C Pivot · Rev. 05.2026</div>
     </div>
 
     <div class="hero-grid">
@@ -2721,7 +3091,7 @@
           <div class="lk-name">App icon + tab favicon</div>
         </div>
         <div class="lockup wrong">
-          <div class="lk-caption" style="color:var(--signal-red);">Do not · gradient fills</div>
+          <div class="lk-caption" style="color: var(--red); opacity: 1;">Do not · gradient fills</div>
           <div class="lk-stage"><div class="mark-box" style="background:linear-gradient(135deg,#ff6712,#cc1417);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">bs<span class="slash" style="background:none;-webkit-text-fill-color:#1A1A1A;color:#1A1A1A;">/</span>d</div></div>
           <div class="lk-name">No gradients — ever.</div>
         </div>
@@ -2768,32 +3138,32 @@
           <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); font-weight: 600;">30% · Canvas</div>
           <div>
             <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px;">Warm Grey</div>
-            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.55; margin-bottom: 10px;">#EFEBE2</div>
-            <div style="font-size: 12px; line-height: 1.5; opacity: 0.6;">Page bg · section surfaces · breathing room. Never fill CTAs or alerts.</div>
+            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.78; margin-bottom: 10px;">#EFEBE2</div>
+            <div style="font-size: 12px; line-height: 1.5; opacity: 0.78;">Page bg · section surfaces · breathing room. Never fill CTAs or alerts.</div>
           </div>
         </div>
         <div style="background: #FFFFF8; color: #0A0A0A; padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(0,0,0,0.08);">
           <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); font-weight: 600;">30% · Surface</div>
           <div>
             <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px;">Warm White</div>
-            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.55; margin-bottom: 10px;">#FFFFF8</div>
-            <div style="font-size: 12px; line-height: 1.5; opacity: 0.6;">Cards · modals · overlays. Reads as white — barely-there warmth.</div>
+            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.78; margin-bottom: 10px;">#FFFFF8</div>
+            <div style="font-size: 12px; line-height: 1.5; opacity: 0.78;">Cards · modals · overlays. Reads as white — barely-there warmth.</div>
           </div>
         </div>
         <div style="background: #CC1417; color: #fff; padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,0.15);">
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); font-weight: 600;">20% · Focus</div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.92); font-weight: 600;">20% · Focus</div>
           <div>
             <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px;">ScamAdviser Red</div>
-            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.65; margin-bottom: 10px;">#CC1417</div>
+            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.82; margin-bottom: 10px;">#CC1417</div>
             <div style="font-size: 12px; line-height: 1.5; opacity: 0.8;">CTAs · alerts · brand hero moments. One red family only — no tints.</div>
           </div>
         </div>
         <div style="background: #1A1A1A; color: #fff; padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 600;">20% · Anchor</div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.78); font-weight: 600;">20% · Anchor</div>
           <div>
             <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px;">Ink Black</div>
-            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.55; margin-bottom: 10px;">#1A1A1A</div>
-            <div style="font-size: 12px; line-height: 1.5; opacity: 0.65;">Body text · borders · dark UI · structural weight.</div>
+            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.78; margin-bottom: 10px;">#1A1A1A</div>
+            <div style="font-size: 12px; line-height: 1.5; opacity: 0.82;">Body text · borders · dark UI · structural weight.</div>
           </div>
         </div>
       </div>
@@ -2807,7 +3177,7 @@
 
       <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--ink);">
         <div style="border-right: 1px solid var(--ink); border-top: 3px solid #4A5568; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5;">Option A · Slate</div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.72;">Option A · Slate</div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <div style="height: 56px; background: #4A5568; border-radius: 4px;"></div>
             <div style="height: 32px; background: #718096; border-radius: 4px;"></div>
@@ -2815,12 +3185,12 @@
           </div>
           <div>
             <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">#4A5568 · Slate</div>
-            <div style="font-size: 12px; opacity: 0.6; margin-top: 4px; line-height: 1.4;">Cool, editorial, credible. Works well for community badges and data labels. No risk-state confusion.</div>
+            <div style="font-size: 12px; opacity: 0.78; margin-top: 4px; line-height: 1.4;">Cool, editorial, credible. Works well for community badges and data labels. No risk-state confusion.</div>
           </div>
           <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--red); margin-top: auto;">Good for: data, editorial</div>
         </div>
         <div style="border-right: 1px solid var(--ink); border-top: 3px solid #B45309; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5;">Option B · Amber</div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.72;">Option B · Amber</div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <div style="height: 56px; background: #B45309; border-radius: 4px;"></div>
             <div style="height: 32px; background: #D97706; border-radius: 4px;"></div>
@@ -2828,12 +3198,12 @@
           </div>
           <div>
             <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">#B45309 · Amber</div>
-            <div style="font-size: 12px; opacity: 0.6; margin-top: 4px; line-height: 1.4;">Warm, bold, pairs naturally with the grey canvas. Energetic without crossing into the orange-warning territory.</div>
+            <div style="font-size: 12px; opacity: 0.78; margin-top: 4px; line-height: 1.4;">Warm, bold, pairs naturally with the grey canvas. Energetic without crossing into the orange-warning territory.</div>
           </div>
           <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--red); margin-top: auto;">Good for: campaign, social</div>
         </div>
         <div style="border-right: 1px solid var(--ink); border-top: 3px solid #6B3F5E; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5;">Option C · Plum</div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.72;">Option C · Plum</div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <div style="height: 56px; background: #6B3F5E; border-radius: 4px;"></div>
             <div style="height: 32px; background: #9B6B8E; border-radius: 4px;"></div>
@@ -2841,12 +3211,12 @@
           </div>
           <div>
             <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">#6B3F5E · Plum</div>
-            <div style="font-size: 12px; opacity: 0.6; margin-top: 4px; line-height: 1.4;">Distinctive and unlike anything in the risk ladder. Skews editorial and peer-community — high contrast against warm grey.</div>
+            <div style="font-size: 12px; opacity: 0.78; margin-top: 4px; line-height: 1.4;">Distinctive and unlike anything in the risk ladder. Skews editorial and peer-community — high contrast against warm grey.</div>
           </div>
           <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--red); margin-top: auto;">Good for: community, peer</div>
         </div>
         <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px; border-right: 1px solid var(--ink); border-top: 3px solid #2D4A3E;">
-          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5;">Option D · Forest</div>
+          <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.72;">Option D · Forest</div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <div style="height: 56px; background: #2D4A3E; border-radius: 4px;"></div>
             <div style="height: 32px; background: #4A7C68; border-radius: 4px;"></div>
@@ -2854,7 +3224,7 @@
           </div>
           <div>
             <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">#2D4A3E · Forest</div>
-            <div style="font-size: 12px; opacity: 0.6; margin-top: 4px; line-height: 1.4;">Deep, grounded, premium feel. Dark enough to not be confused with the safe-green functional colour in the risk ladder.</div>
+            <div style="font-size: 12px; opacity: 0.78; margin-top: 4px; line-height: 1.4;">Deep, grounded, premium feel. Dark enough to not be confused with the safe-green functional colour in the risk ladder.</div>
           </div>
           <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--red); margin-top: auto;">Good for: trust, premium</div>
         </div>
@@ -2867,7 +3237,7 @@
           </div>
           <div>
             <div style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">#317BB8 · Trust Blue</div>
-            <div style="font-size: 12px; opacity: 0.6; margin-top: 4px; line-height: 1.4;">Original brand secondary. Carries existing recognition and pairs naturally with the red. Strong community and peer-trust associations.</div>
+            <div style="font-size: 12px; opacity: 0.78; margin-top: 4px; line-height: 1.4;">Original brand secondary. Carries existing recognition and pairs naturally with the red. Strong community and peer-trust associations.</div>
           </div>
           <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: #317BB8; margin-top: auto;">Good for: community</div>
         </div>
@@ -2875,7 +3245,7 @@
 
       <!-- Guardrail -->
       <div class="tier-head" style="margin-top:72px;">
-        <span class="n" style="color: var(--signal-red);">Guardrail</span>
+        <span class="n" style="color: var(--red);">Guardrail</span>
         <h3 style="font-size: 20px; font-weight: 600;">Secondary never touches risk states.</h3>
         <span class="note">Whichever option is chosen stays out of the red → orange → green → teal ladder entirely.</span>
       </div>
@@ -2887,31 +3257,31 @@
           <span class="meta">Trust score → color → verdict</span>
         </h3>
         <div class="ladder-row">
-          <div class="ladder-score" style="background: #EE3E41;">00<br><span style="font-size: 10px; opacity: 0.7;">–39</span></div>
+          <div class="ladder-score" style="background: #EE3E41;">00<br><span style="font-size: 10px; opacity: 0.88;">–39</span></div>
           <div class="ladder-label">Dangerous</div>
           <div class="ladder-example">fancy-luxury-deals-official-outlet.biz</div>
           <div class="ladder-action">Don't click</div>
         </div>
         <div class="ladder-row">
-          <div class="ladder-score" style="background: #FF6712;">40<br><span style="font-size: 10px; opacity: 0.7;">–59</span></div>
+          <div class="ladder-score" style="background: #FF6712;">40<br><span style="font-size: 10px; opacity: 0.88;">–59</span></div>
           <div class="ladder-label">Likely Dangerous</div>
           <div class="ladder-example">crypto-giveaway-elon-musk.net</div>
           <div class="ladder-action">Sketchy — back out</div>
         </div>
         <div class="ladder-row">
-          <div class="ladder-score" style="background: #FF8A00;">60<br><span style="font-size: 10px; opacity: 0.7;">–69</span></div>
+          <div class="ladder-score" style="background: #FF8A00;">60<br><span style="font-size: 10px; opacity: 0.88;">–69</span></div>
           <div class="ladder-label">Warning</div>
           <div class="ladder-example">newshop2025.store</div>
           <div class="ladder-action">Proceed carefully</div>
         </div>
         <div class="ladder-row">
-          <div class="ladder-score" style="background: #63B100;">70<br><span style="font-size: 10px; opacity: 0.7;">–89</span></div>
+          <div class="ladder-score" style="background: #63B100;">70<br><span style="font-size: 10px; opacity: 0.88;">–89</span></div>
           <div class="ladder-label">Likely Safe</div>
           <div class="ladder-example">smaller-indie-brand.com</div>
           <div class="ladder-action">Probably fine</div>
         </div>
         <div class="ladder-row">
-          <div class="ladder-score" style="background: #00A67E;">90<br><span style="font-size: 10px; opacity: 0.7;">–100</span></div>
+          <div class="ladder-score" style="background: #00A67E;">90<br><span style="font-size: 10px; opacity: 0.88;">–100</span></div>
           <div class="ladder-label">Safe</div>
           <div class="ladder-example">nytimes.com</div>
           <div class="ladder-action">Vibe check passed</div>
@@ -2924,7 +3294,7 @@
   <section class="section type-section" id="type">
     <div class="wrap">
       <div class="section-label">04 — Typography</div>
-      <h2 style="font-size: clamp(40px, 6vw, 72px); font-weight: 800; line-height: 0.95; letter-spacing: -0.035em; max-width: 900px;">One typeface. <span style="opacity:0.5;">Many registers.</span></h2>
+      <h2 style="font-size: clamp(40px, 6vw, 72px); font-weight: 800; line-height: 0.95; letter-spacing: -0.035em; max-width: 900px;">One typeface. <span style="opacity: 0.72;">Many registers.</span></h2>
 
       <div class="type-specimen">
         <div class="type-sample">
@@ -3047,7 +3417,7 @@
   <section class="section moodboard" id="mood">
     <div class="wrap">
       <div class="section-label">06 — Visual Language</div>
-      <h2>What it looks <em style="font-style: normal; opacity: 0.4;">and</em> feels like.</h2>
+      <h2>What it looks <em style="font-style: normal; opacity: 0.82;">and</em> feels like.</h2>
 
       <!-- ===== 06a — Photography Direction ===== -->
       <div class="mood-subsection">
@@ -3111,7 +3481,7 @@
       <div class="mood-subsection">
         <div class="sub-label">06b — Icon Set Direction</div>
         <p class="photo-brief" style="margin-bottom: 32px;">
-          Rounded but sharp. 2px consistent stroke weight, rounded joins, semi-filled accents in SA Red on emphasis icons only. Source set: <em style="font-family: var(--mono); font-style: normal; font-size: 14px; letter-spacing: 0.02em; background: var(--anti-flash); padding: 2px 8px; border-radius: 2px;">Phosphor Icons · Regular</em> — MIT licensed, 9 000+ icons.
+          Rounded but sharp. 2px consistent stroke weight, rounded joins. Source set:<a href="https://phosphoricons.com/" target="_blank" rel="noopener" style="font-family: var(--mono); font-style: normal; font-size: 14px; letter-spacing: 0.02em; background: var(--anti-flash); padding: 2px 8px; border-radius: 2px; color: inherit; text-decoration: none;">Phosphor Icons · Regular</a> — MIT licensed, 9 000+ icons.
         </p>
 
         <div class="icon-spec">
@@ -3120,7 +3490,7 @@
           <div class="icon-spec-item"><strong>Corners</strong><span>2 px radius</span></div>
           <div class="icon-spec-item"><strong>Caps &amp; Joins</strong><span>Round</span></div>
           <div class="icon-spec-item"><strong>Accent Fill</strong><span style="color: var(--red);">SA Red @ 12%</span></div>
-          <div class="icon-spec-item"><strong>Source</strong><span>Phosphor Regular</span></div>
+          <div class="icon-spec-item"><strong>Source</strong><span><a href="https://phosphoricons.com/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Phosphor Regular</a></span></div>
         </div>
 
         <div class="icon-grid">
@@ -3220,7 +3590,6 @@
             <h4>Do</h4>
             <ul>
               <li>Use 2px stroke consistently — never mix weights in the same surface.</li>
-              <li>Semi-fill with <em>SA Red at 12% opacity</em> for emphasis icons only (shield, check, warning, chat).</li>
               <li>Align to the 24px grid with 2px padding (20px live area).</li>
               <li>Use rounded joins and caps — matches Phosphor Regular out of the box.</li>
             </ul>
@@ -3369,8 +3738,8 @@
           <!-- 9. Photo collage with italic headline — dark -->
           <div class="bento-cell dark" style="position: relative; padding: 0; overflow: hidden;">
             <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(204,20,23,0.7) 0%, rgba(26,26,26,1) 70%);"></div>
-            <div style="position: absolute; top: 16px; right: 16px; width: 60%; height: 50%; background: linear-gradient(135deg, rgba(204,20,23,0.5), rgba(26,26,26,0.9)); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;">PHOTO</div>
-            <div style="position: absolute; bottom: 16px; left: 16px; width: 50%; height: 35%; background: linear-gradient(135deg, rgba(26,26,26,0.95), rgba(204,20,23,0.4)); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;">PHOTO</div>
+            <div style="position: absolute; top: 16px; right: 16px; width: 60%; height: 50%; background: linear-gradient(135deg, rgba(204,20,23,0.5), rgba(26,26,26,0.9)); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;">PHOTO</div>
+            <div style="position: absolute; bottom: 16px; left: 16px; width: 50%; height: 35%; background: linear-gradient(135deg, rgba(26,26,26,0.95), rgba(204,20,23,0.4)); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;">PHOTO</div>
             <div class="bento-editorial" style="position: absolute; right: 24px; bottom: 24px; font-size: clamp(16px, 1.9vw, 22px); text-align: right; max-width: 60%; z-index: 2;"><span class="italic accent">Catch</span><br>what you'd<br>miss:<br>peer-powered<br>scam detection.</div>
           </div>
 
@@ -3385,7 +3754,7 @@
             <div class="chart-pattern-label">01 · Stat Tile</div>
             <div class="chart-pattern-canvas" style="justify-content: flex-start; flex-direction: column; align-items: flex-start; gap: 4px;">
               <div style="font-family: var(--mono); font-weight: 700; font-size: 56px; letter-spacing: -0.04em; line-height: 0.95;">2.1<span style="color: var(--red); opacity: 0.7;">M</span></div>
-              <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; opacity: 0.5; text-transform: uppercase;">Active users · monthly</div>
+              <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; opacity: 0.72; text-transform: uppercase;">Active users · monthly</div>
             </div>
             <div class="chart-pattern-use">Hero metric. One number that defines the screen. Always JetBrains Mono 700.</div>
           </div>
@@ -3402,8 +3771,8 @@
                 <path d="M 136 22 A 90 90 0 0 1 173 47" stroke="#63B100" stroke-width="14" fill="none"/>
                 <path d="M 173 47 A 90 90 0 0 1 200 110" stroke="#00A67E" stroke-width="14" fill="none"/>
                 <!-- Scale anchors -->
-                <text x="20" y="128" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1A1A1A" opacity="0.4" letter-spacing="0.06em">0</text>
-                <text x="200" y="128" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1A1A1A" opacity="0.4" letter-spacing="0.06em">100</text>
+                <text x="20" y="128" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1A1A1A" opacity="0.7" letter-spacing="0.06em">0</text>
+                <text x="200" y="128" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1A1A1A" opacity="0.7" letter-spacing="0.06em">100</text>
                 <!-- Needle pointing at 92: angle = 180° × (1 − 92/100) = 14.4° from horizontal right -->
                 <line x1="110" y1="110" x2="187.2" y2="89.7" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
                 <circle cx="110" cy="110" r="6" fill="#1A1A1A"/>
@@ -3426,7 +3795,7 @@
                 <div style="flex: 31; background: #63B100;"></div>
                 <div style="flex: 35; background: #00A67E;"></div>
               </div>
-              <div style="display: flex; font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; opacity: 0.6; justify-content: space-between;">
+              <div style="display: flex; font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; opacity: 0.78; justify-content: space-between;">
                 <span>8% danger</span>
                 <span>26% caution</span>
                 <span>66% safe</span>
@@ -3457,7 +3826,7 @@
                 <span style="font-family: var(--mono); font-weight: 700; font-size: 22px; letter-spacing: -0.02em;">+34%</span>
                 <svg viewBox="0 0 80 24" style="width: 80px; height: 24px;"><path d="M0 20 L10 18 L20 14 L30 16 L40 10 L50 12 L60 6 L70 8 L80 2" stroke="#CC1417" stroke-width="1.5" fill="none"/></svg>
               </div>
-              <span style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; opacity: 0.5; text-transform: uppercase;">YoY · 12 months</span>
+              <span style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; opacity: 0.72; text-transform: uppercase;">YoY · 12 months</span>
             </div>
             <div class="chart-pattern-use">Inline trend next to a stat. No axis labels — context only.</div>
           </div>
@@ -3467,15 +3836,15 @@
             <div class="chart-pattern-label">06 · Comparison Bars</div>
             <div class="chart-pattern-canvas" style="flex-direction: column; gap: 10px; align-items: stretch;">
               <div>
-                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; opacity: 0.6; margin-bottom: 4px;"><span>REPORTED</span><span style="color: var(--ink);">2,341</span></div>
+                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; opacity: 0.78; margin-bottom: 4px;"><span>REPORTED</span><span style="color: var(--ink);">2,341</span></div>
                 <div style="height: 10px; background: rgba(0,0,0,0.08);"><div style="height: 100%; width: 100%; background: #1A1A1A;"></div></div>
               </div>
               <div>
-                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; opacity: 0.6; margin-bottom: 4px;"><span>VERIFIED</span><span style="color: var(--red);">2,083</span></div>
+                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; opacity: 0.78; margin-bottom: 4px;"><span>VERIFIED</span><span style="color: var(--red);">2,083</span></div>
                 <div style="height: 10px; background: rgba(0,0,0,0.08);"><div style="height: 100%; width: 89%; background: #CC1417;"></div></div>
               </div>
               <div>
-                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; opacity: 0.6; margin-bottom: 4px;"><span>DISPUTED</span><span style="opacity: 0.6;">258</span></div>
+                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; opacity: 0.78; margin-bottom: 4px;"><span>DISPUTED</span><span style="opacity: 0.78;">258</span></div>
                 <div style="height: 10px; background: rgba(0,0,0,0.08);"><div style="height: 100%; width: 11%; background: rgba(0,0,0,0.4);"></div></div>
               </div>
             </div>
@@ -3764,10 +4133,279 @@
     </div>
   </section>
 
+  <!-- ============ DESIGN SYSTEM FOUNDATIONS ============ -->
+  <section class="section system-section" id="system">
+    <div class="wrap">
+      <div class="section-label">08 — Design System</div>
+      <h2>The rules <span class="red">underneath</span> the screens.</h2>
+      <p class="intro">Tokens, components, motion. The bits that make every screen feel like the same product without anyone having to think about it. Use these as defaults — only break them when the moment is loud enough to earn it.</p>
+
+      <div class="ds-grid">
+
+        <!-- Buttons / CTAs -->
+        <div class="ds-block span-8">
+          <div class="ds-label">01 · Buttons & CTAs</div>
+          <div class="ds-title">Pills, not rectangles. <em style="font-style: italic; font-weight: 300;">One primary per screen.</em></div>
+          <div class="ds-desc">Primary is SA Red, full pill, white label. Secondary is ink outline. Ghost is text-only with a red hover. Never two primaries fighting on the same view.</div>
+
+          <!-- Variants -->
+          <div class="ds-spec-table" style="margin-top: 16px;">
+            <div class="ds-spec-row head">
+              <span>Variant</span><span>Sample</span><span>Use</span><span>Spec</span>
+            </div>
+            <div class="ds-spec-row">
+              <span class="var">Primary</span>
+              <span class="sample"><button class="sa-btn primary">Check this link <span class="arrow">→</span></button></span>
+              <span class="use">The single action you want users to take. One per screen.</span>
+              <span class="token">bg sa-red · text white</span>
+            </div>
+            <div class="ds-spec-row">
+              <span class="var">Secondary</span>
+              <span class="sample"><button class="sa-btn secondary">Why we flagged it</button></span>
+              <span class="use">Supporting choice that's still important — never paired against another primary.</span>
+              <span class="token">1px ink outline · transparent</span>
+            </div>
+            <div class="ds-spec-row">
+              <span class="var">Ghost</span>
+              <span class="sample"><button class="sa-btn ghost">Skip <span class="arrow">→</span></button></span>
+              <span class="use">Dismiss, skip, or tertiary nav. Hover turns SA Red.</span>
+              <span class="token">text only · red on hover</span>
+            </div>
+            <div class="ds-spec-row">
+              <span class="var">Danger</span>
+              <span class="sample"><button class="sa-btn danger">Block site</button></span>
+              <span class="use">Destructive confirm. Ink default, SA Red on hover signals consequence.</span>
+              <span class="token">bg ink · hover sa-red</span>
+            </div>
+          </div>
+
+          <!-- Sizes -->
+          <div class="ds-label" style="margin-top: 32px;">Sizes</div>
+          <div class="ds-spec-table compact" style="margin-top: 8px;">
+            <div class="ds-spec-row head">
+              <span>Size</span><span>Sample</span><span>Padding</span><span>Font</span>
+            </div>
+            <div class="ds-spec-row">
+              <span class="var">SM</span>
+              <span class="sample"><button class="sa-btn primary sm">Report scam</button></span>
+              <span class="token">8 / 16</span>
+              <span class="token">Inter 600 · 12px</span>
+            </div>
+            <div class="ds-spec-row">
+              <span class="var">MD <em style="font-style: italic; opacity: 0.72; font-size: 9px; letter-spacing: 0.08em; margin-left: 4px;">default</em></span>
+              <span class="sample"><button class="sa-btn primary">Report scam</button></span>
+              <span class="token">12 / 22</span>
+              <span class="token">Inter 600 · 14px</span>
+            </div>
+            <div class="ds-spec-row">
+              <span class="var">LG</span>
+              <span class="sample"><button class="sa-btn primary lg">Report scam</button></span>
+              <span class="token">16 / 32</span>
+              <span class="token">Inter 600 · 16px</span>
+            </div>
+          </div>
+
+          <div class="ds-rule">
+            <strong style="color: var(--red); font-weight: 400;">Tokens:</strong>
+            radius 999px · transition 200ms cubic-bezier(0.2, 0.8, 0.2, 1) · hover lifts 1px (primary)
+          </div>
+        </div>
+
+        <!-- Spacing Scale -->
+        <div class="ds-block span-4">
+          <div class="ds-label">03 · Spacing Scale</div>
+          <div class="ds-title">Multiples of 4. <em style="font-style: italic; font-weight: 300;">Stop inventing.</em></div>
+          <div class="ds-spacing-stack">
+            <div class="ds-spacing-row"><span class="lbl">XS</span><span class="bar" style="width: 4px;"></span><span class="val">4px</span></div>
+            <div class="ds-spacing-row"><span class="lbl">SM</span><span class="bar" style="width: 8px;"></span><span class="val">8px</span></div>
+            <div class="ds-spacing-row"><span class="lbl">MD</span><span class="bar" style="width: 16px;"></span><span class="val">16px</span></div>
+            <div class="ds-spacing-row"><span class="lbl">LG</span><span class="bar" style="width: 24px;"></span><span class="val">24px</span></div>
+            <div class="ds-spacing-row"><span class="lbl">XL</span><span class="bar" style="width: 48px;"></span><span class="val">48px</span></div>
+            <div class="ds-spacing-row"><span class="lbl">2XL</span><span class="bar" style="width: 80px;"></span><span class="val">80px</span></div>
+          </div>
+          <div class="ds-rule">Section padding: 80–120 · card padding: 24–32 · field gap: 12.</div>
+        </div>
+
+        <!-- Padding / Density -->
+        <div class="ds-block span-4">
+          <div class="ds-label">04 · Padding & Density</div>
+          <div class="ds-title">Breathe. <em style="font-style: italic; font-weight: 300;">Then breathe more.</em></div>
+          <div style="display: flex; flex-direction: column; gap: 12px; font-family: var(--mono); font-size: 12px;">
+            <div style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px dashed rgba(0,0,0,0.15);"><span style="opacity: 0.78;">Section</span><span style="font-weight: 700; letter-spacing: -0.02em;">96–120 / 64</span></div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px dashed rgba(0,0,0,0.15);"><span style="opacity: 0.78;">Card</span><span style="font-weight: 700; letter-spacing: -0.02em;">32 / 24</span></div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px dashed rgba(0,0,0,0.15);"><span style="opacity: 0.78;">Button (md)</span><span style="font-weight: 700; letter-spacing: -0.02em;">12 / 22</span></div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px dashed rgba(0,0,0,0.15);"><span style="opacity: 0.78;">Input</span><span style="font-weight: 700; letter-spacing: -0.02em;">14 / 16</span></div>
+            <div style="display: flex; justify-content: space-between;"><span style="opacity: 0.78;">List row</span><span style="font-weight: 700; letter-spacing: -0.02em;">16 / 20</span></div>
+          </div>
+          <div class="ds-rule">Vertical / horizontal padding in px. Web defaults — mobile shrinks 25%.</div>
+        </div>
+
+        <!-- Inputs -->
+        <div class="ds-block span-4">
+          <div class="ds-label">05 · Form Inputs</div>
+          <div class="ds-title">Square corners. <em style="font-style: italic; font-weight: 300;">Red focus ring.</em></div>
+          <div class="ds-input-row">
+            <label>Paste a link</label>
+            <input class="ds-input" type="text" placeholder="https://something-suspicious.info" />
+          </div>
+          <div class="ds-input-row">
+            <label>Or describe what you saw</label>
+            <input class="ds-input" type="text" placeholder="Got a text from 'PayPaI' (capital i)…" />
+          </div>
+          <div class="ds-rule">Radius 4px · 14/16 padding · 1px border, ink on focus, 2px red outline.</div>
+        </div>
+
+        <!-- Corner Radius — full-width spec table -->
+        <div class="ds-block span-12 dark">
+          <div class="ds-label" style="color: rgba(255,255,255,0.78);">02 · Corner Radius</div>
+          <div class="ds-title">Sharp for data. <em style="font-style: italic; font-weight: 300;">Pill for action.</em></div>
+          <div class="ds-desc" style="color: rgba(255,255,255,0.85); max-width: 720px;">Four levels, no in-betweens. Each radius does a job — none of them are decorative. If a UI element doesn't fit one of these four, redesign the element, not the radius.</div>
+
+          <div class="ds-radius-row head">
+            <span>Sample</span>
+            <span>Token</span>
+            <span class="h-use">Use</span>
+            <span class="h-where">Where you'll see it</span>
+          </div>
+
+          <div class="ds-radius-item">
+            <div class="ds-radius-chip" style="border-radius: 0;"></div>
+            <span class="meta"><span class="v">0</span><span class="n">radius-0 · 0 px</span></span>
+            <span class="ds-radius-use">Sharp. Used for anything that reads as data — bars, gridlines, dividers, table cells, score numerators.</span>
+            <span class="ds-radius-where">Risk-ladder bars · stacked-bar charts · column rules · score "12" digits</span>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-chip" style="border-radius: 4px;"></div>
+            <span class="meta"><span class="v">4</span><span class="n">radius-sm · 4 px</span></span>
+            <span class="ds-radius-use">Soft. Just enough rounding to feel digital — never enough to feel friendly. Reserved for inputs and small chips.</span>
+            <span class="ds-radius-where">Text inputs · select fields · search bars · highlight marks · form field focus rings</span>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-chip" style="border-radius: 14px;"></div>
+            <span class="meta"><span class="v">14</span><span class="n">radius-md · 14 px</span></span>
+            <span class="ds-radius-use">The container radius. Cards, modals, panels — anything you'd describe as a "surface" — uses this single value.</span>
+            <span class="ds-radius-where">Score detail cards · share cards · phone screen content · notification toasts · tooltips</span>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-chip" style="border-radius: 999px; background: var(--red);"></div>
+            <span class="meta"><span class="v">∞</span><span class="n">radius-pill · 999 px</span></span>
+            <span class="ds-radius-use">Pill. Reserved for actions — never used for content. The shape itself is the affordance: "this is something you tap."</span>
+            <span class="ds-radius-where">Primary &amp; secondary buttons · ghost actions · pill tags · score badges · avatar rings</span>
+          </div>
+
+          <div class="ds-rule" style="color: rgba(255,255,255,0.78);">
+            <strong style="color: var(--signal-red); font-weight: 400;">Forbidden middle ground:</strong>
+            no 6 px, no 8 px, no 10 px. Four steps, picked on purpose — sharp, soft, surface, or pill.
+          </div>
+        </div>
+
+        <!-- Motion -->
+        <div class="ds-block span-6 dark">
+          <div class="ds-label" style="color: rgba(255,255,255,0.78);">06 · Motion</div>
+          <div class="ds-title">Quick. <em style="font-style: italic; font-weight: 300;">Never showy.</em></div>
+          <div class="ds-desc" style="color: rgba(255,255,255,0.78);">Three durations, one easing. UI feedback under 200ms feels instant. Layout shifts get 320ms. Anything longer and we're getting in the way.</div>
+          <div class="ds-motion-row">
+            <div>
+              <div class="ds-motion-track"><div class="ds-motion-dot demo-fast"></div></div>
+              <div class="ds-motion-meta"><span>FAST · UI feedback (hover, tap, toggle)</span><span>120ms · ease-out</span></div>
+            </div>
+            <div>
+              <div class="ds-motion-track"><div class="ds-motion-dot demo-base"></div></div>
+              <div class="ds-motion-meta"><span>BASE · Default transition</span><span>200ms · cubic-bezier(0.2, 0.8, 0.2, 1)</span></div>
+            </div>
+            <div>
+              <div class="ds-motion-track"><div class="ds-motion-dot demo-slow"></div></div>
+              <div class="ds-motion-meta"><span>SLOW · Layout, modal, page</span><span>320ms · cubic-bezier(0.4, 0, 0.2, 1)</span></div>
+            </div>
+          </div>
+          <div class="ds-rule" style="color: rgba(255,255,255,0.75);">No bouncy springs. No parallax. No spinning loaders longer than 1.6s — show progress instead.</div>
+        </div>
+
+        <!-- Elevation -->
+        <div class="ds-block span-6">
+          <div class="ds-label">07 · Elevation</div>
+          <div class="ds-title">Mostly flat. <em style="font-style: italic; font-weight: 300;">Shadow earns its place.</em></div>
+          <div class="ds-elev-row">
+            <div class="ds-elev-card e0"><span class="v">e0</span>flat / inline</div>
+            <div class="ds-elev-card e1"><span class="v">e1</span>raised card</div>
+            <div class="ds-elev-card e2"><span class="v">e2</span>popover</div>
+            <div class="ds-elev-card e3"><span class="v">e3</span>modal / extension</div>
+          </div>
+          <div class="ds-rule">e0 default. e2 only for things that float over content. e3 reserved for the browser-extension popup.</div>
+        </div>
+
+        <!-- Iconography -->
+        <div class="ds-block span-6">
+          <div class="ds-label">08 · Iconography</div>
+          <div class="ds-title">Line, not fill.</div>
+          <div class="ds-icon-grid">
+            <div class="ds-icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg></div>
+            <div class="ds-icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"/></svg></div>
+            <div class="ds-icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="#CC1417" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg></div>
+          </div>
+          <div class="ds-rule">24px box · 1.5px stroke · round caps. Red only when it's a state.</div>
+        </div>
+
+        <!-- Highlight -->
+        <div class="ds-block span-6">
+          <div class="ds-label">09 · Highlight</div>
+          <div class="ds-title">Mark what <em style="font-style: italic; font-weight: 300;">matters.</em></div>
+          <div class="ds-desc">Highlight is how we point at the receipt. SA Red at 18% behind a phrase — subtle but unmissable. Solid red is reserved for the one term you want users to react to.</div>
+          <div class="ds-highlight-demo">
+            <span class="label">Inline · 18% red</span>
+            <p>This domain was registered <mark>6 days ago</mark> and 2,341 users have already flagged it. Make the call.</p>
+            <span class="label">URL emphasis</span>
+            <p class="mono">trust-bank-alert.<mark>info</mark>/login?ref=sms</p>
+            <span class="label">Hot mark · solid</span>
+            <p><mark class="solid">Don't tap that link.</mark> &nbsp;Use solid red only for the moment that has to land.</p>
+          </div>
+          <div class="ds-rule">SA Red @ 18% · 1/4px padding · 2px radius. One highlight per paragraph — more than that is shouting.</div>
+        </div>
+
+        <!-- Component anatomy -->
+        <div class="ds-block span-12 dark">
+          <div class="ds-label" style="color: rgba(255,255,255,0.78);">10 · Component Anatomy — Score Card</div>
+          <div class="ds-title">Every component, three layers: <span class="red" style="color: var(--signal-red);">data, frame, action.</span></div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 8px;">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; padding: 32px; background: var(--white); color: var(--ink); border-radius: 14px;">
+              <!-- LEFT: enlarged score block -->
+              <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+                <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; opacity: 0.72; text-transform: uppercase;">Trust Score</div>
+                <div style="display: flex; align-items: baseline; gap: 8px;">
+                  <div style="font-family: var(--mono); font-weight: 700; font-size: clamp(96px, 12vw, 144px); letter-spacing: -0.06em; line-height: 0.85; color: #EE3E41;">12</div>
+                  <div style="font-family: var(--mono); font-size: 16px; opacity: 0.7; letter-spacing: -0.02em;">/100</div>
+                </div>
+              </div>
+              <!-- RIGHT: verdict + CTAs -->
+              <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start; border-left: 1px solid rgba(0,0,0,0.08); padding-left: 28px; align-self: stretch; justify-content: center;">
+                <div style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;">Failed the<br>vibe check.</div>
+                <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; opacity: 0.78; line-height: 1.5;">Domain 6 days old · 2,341 reports.</div>
+                <div style="display: flex; gap: 10px; margin-top: 4px; flex-wrap: wrap;">
+                  <button class="sa-btn primary sm">Back to safety</button>
+                  <button class="sa-btn secondary sm">Why?</button>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 14px; font-family: var(--mono); font-size: 12px; line-height: 1.6; color: rgba(255,255,255,0.85);">
+              <div><span style="color: var(--signal-red);">data</span> · score (mono 700, risk-ladder color), denominator, verdict line</div>
+              <div><span style="color: var(--signal-red);">frame</span> · paper bg, 14px radius, 28px padding, e0 elevation</div>
+              <div><span style="color: var(--signal-red);">action</span> · primary CTA + ghost. Never two primaries.</div>
+              <div style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; margin-top: 12px; opacity: 0.78;">Color of the score number = score band. Everything else stays neutral so the number does the talking.</div>
+            </div>
+          </div>
+          <div class="ds-rule" style="color: rgba(255,255,255,0.75);">Same anatomy applies across all surfaces — extension popup, app card, share card, web detail page.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ============ TAGLINE SYSTEM ============ -->
   <section class="section taglines" id="taglines">
     <div class="wrap">
-      <div class="section-label">08 — Tagline System</div>
+      <div class="section-label">09 — Tagline System</div>
       <h2>One hero line. <em>A family behind it.</em></h2>
       <p class="intro">One main line that shows up everywhere. The rest are for specific moments — campaigns, product, press. All sound like the same person talking.</p>
 
@@ -3806,7 +4444,7 @@
     <p>The brand isn't the logo. It's the moment a user forwards a sketchy link to a friend with the caption: "lol scamadviser already flagged it."</p>
     <div class="close-foot">
       <div>ScamAdviser · B2C Brand Exploration</div>
-      <div>V1 · April 2026 · Internal</div>
+      <div>V1 · May 2026 · Internal</div>
     </div>
   </section>
 
