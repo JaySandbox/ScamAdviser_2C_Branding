@@ -2555,7 +2555,9 @@
     line-height: 1;
   }
   .sa-btn.primary { background: var(--red); color: var(--white); border-color: var(--red); }
-  .sa-btn.primary:hover { background: #B0100F; transform: translateY(-1px); }
+  .sa-btn.primary:hover { background: #B0100F; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(204,20,23,0.28); }
+  .sa-btn.primary:active { transform: translateY(0) scale(0.97); box-shadow: none; }
+  .sa-btn.secondary:active { transform: scale(0.97); }
   .sa-btn.secondary { background: transparent; color: var(--ink); border-color: var(--ink); }
   .sa-btn.secondary:hover { background: var(--ink); color: var(--white); }
   .sa-btn.ghost { background: transparent; color: var(--ink); border-color: transparent; padding-left: 8px; padding-right: 8px; }
@@ -2765,6 +2767,85 @@
     letter-spacing: 0.12em; text-transform: uppercase;
     opacity: 0.7; margin-bottom: -4px;
   }
+
+  /* Sound block */
+  .ds-sound-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;
+  }
+  .ds-sound-cell {
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 16px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .ds-sound-cell .nm {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; font-weight: 700;
+    color: var(--signal-red);
+  }
+  .ds-sound-cell .use {
+    font-family: var(--sans); font-size: 12px; line-height: 1.45;
+    opacity: 0.85;
+  }
+  .ds-sound-cell .play {
+    align-self: flex-start;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 6px 12px; border-radius: 999px;
+    background: rgba(255,255,255,0.12); color: var(--warm-white);
+    border: 1px solid rgba(255,255,255,0.18);
+    cursor: pointer;
+    transition: background 120ms cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .ds-sound-cell .play:hover { background: rgba(255,255,255,0.22); }
+
+  /* Toast demo */
+  .ds-toast-stage {
+    position: relative; width: 100%; height: 160px;
+    background: var(--warm-white); border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.06); overflow: hidden;
+    margin-top: 12px;
+  }
+  .ds-toast {
+    position: absolute; top: 14px; right: 14px;
+    background: var(--ink); color: var(--white);
+    padding: 12px 16px; border-radius: 14px;
+    display: flex; gap: 10px; align-items: center;
+    font-family: var(--mono); font-size: 12px; line-height: 1.4; letter-spacing: -0.005em;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+    transform: translateX(140%); opacity: 0;
+    max-width: calc(100% - 28px);
+  }
+  .ds-toast .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--signal-red); flex-shrink: 0; }
+  .ds-toast.show { animation: dsToastIn 320ms cubic-bezier(0.2,0.8,0.2,1) forwards; }
+  @keyframes dsToastIn {
+    0%   { transform: translateX(140%); opacity: 0; }
+    70%  { transform: translateX(-6px); opacity: 1; }
+    100% { transform: translateX(0);    opacity: 1; }
+  }
+
+  /* Counter bump (applied via JS to peer counters) */
+  @keyframes counterBump {
+    0%   { transform: translateY(0)    scale(1); }
+    35%  { transform: translateY(-2px) scale(1.05); }
+    100% { transform: translateY(0)    scale(1); }
+  }
+  .counter-bump { animation: counterBump 220ms cubic-bezier(0.2,0.8,0.2,1); }
+
+  /* Sticky sound toggle */
+  .audio-toggle {
+    position: fixed; right: 20px; bottom: 20px; z-index: 50;
+    background: var(--ink); color: var(--warm-white);
+    padding: 10px 16px; border-radius: 999px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    border: 1px solid var(--ink); cursor: pointer;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+    display: flex; align-items: center; gap: 8px;
+    transition: background 200ms cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .audio-toggle .ind {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    transition: background 200ms;
+  }
+  .audio-toggle.on { background: var(--red); border-color: var(--red); }
+  .audio-toggle.on .ind { background: var(--warm-white); box-shadow: 0 0 0 4px rgba(255,255,255,0.18); }
 
   /* Field / input */
   .ds-input {
@@ -4362,9 +4443,63 @@
           <div class="ds-rule">SA Red @ 18% · 1/4px padding · 2px radius. One highlight per paragraph — more than that is shouting.</div>
         </div>
 
+        <!-- Sound -->
+        <div class="ds-block span-6 dark" id="sound-block">
+          <div class="ds-label" style="color: rgba(255,255,255,0.78);">10 · Sound</div>
+          <div class="ds-title">Receipts you can <em style="font-style: italic; font-weight: 300;">hear.</em></div>
+          <div class="ds-desc" style="color: rgba(255,255,255,0.85);">Four synthesized cues — no asset files, no licensing, no system-tone fatigue. Each one is shorter than 280 ms and earns its keep by signaling state, not decorating it. Enable the toggle in the corner to hear them on every button press.</div>
+          <div class="ds-sound-grid">
+            <div class="ds-sound-cell">
+              <span class="nm">cue.tap</span>
+              <span class="use">Sine tick @ 1.2 kHz · 40 ms. Plays on every primary &amp; secondary button press.</span>
+              <button class="play" data-cue="tap">▶ Play</button>
+            </div>
+            <div class="ds-sound-cell">
+              <span class="nm">cue.tick</span>
+              <span class="use">Triangle pop sliding 520 → 380 Hz · 70 ms. Pairs with counter-bump on peer-report increments.</span>
+              <button class="play" data-cue="tick">▶ Play</button>
+            </div>
+            <div class="ds-sound-cell">
+              <span class="nm">cue.safe</span>
+              <span class="use">Two-note sine rise C5 → E5 · 220 ms. Confirms a safe verdict — quietly positive.</span>
+              <button class="play" data-cue="safe">▶ Play</button>
+            </div>
+            <div class="ds-sound-cell">
+              <span class="nm">cue.block</span>
+              <span class="use">Sub-bass thunk + low-pass noise tail · 220 ms. Fires when user backs out of a scam page.</span>
+              <button class="play" data-cue="block">▶ Play</button>
+            </div>
+          </div>
+          <div class="ds-rule" style="color: rgba(255,255,255,0.78);">
+            <strong style="color: var(--signal-red); font-weight: 400;">Rules:</strong>
+            opt-in only · master volume capped at 0.55 · auto-mute if <code style="font-family: var(--mono); opacity: 0.85;">prefers-reduced-motion</code>.
+          </div>
+        </div>
+
+        <!-- Toast -->
+        <div class="ds-block span-6">
+          <div class="ds-label">11 · Toast / Feedback</div>
+          <div class="ds-title">Slide-in, <em style="font-style: italic; font-weight: 300;">land, leave.</em></div>
+          <div class="ds-desc">Toasts come from the right with a 6 px overshoot dampen at 70% of the timeline — the only place the brand earns a tiny break from the "no bouncy springs" rule. 320 ms in, holds 2.5 s, fades out.</div>
+          <div class="ds-toast-stage" id="dsToastStage">
+            <div class="ds-toast" id="dsToast">
+              <span class="dot"></span>
+              <span>Domain flagged · 2,341 reports</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px;">
+            <button class="sa-btn primary sm" id="dsToastTrigger">▶ Trigger</button>
+            <button class="sa-btn secondary sm" id="dsCounterTrigger">▶ Counter bump</button>
+          </div>
+          <div class="ds-rule">
+            <strong style="color: var(--red); font-weight: 400;">Tokens:</strong>
+            radius 14px · padding 12/16 · transform 320ms ease · auto-dismiss 2500ms · max-width 90%.
+          </div>
+        </div>
+
         <!-- Component anatomy -->
         <div class="ds-block span-12 dark">
-          <div class="ds-label" style="color: rgba(255,255,255,0.78);">10 · Component Anatomy — Score Card</div>
+          <div class="ds-label" style="color: rgba(255,255,255,0.78);">12 · Component Anatomy — Score Card</div>
           <div class="ds-title">Every component, three layers: <span class="red" style="color: var(--signal-red);">data, frame, action.</span></div>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 8px;">
@@ -4444,7 +4579,7 @@
     <p>The brand isn't the logo. It's the moment a user forwards a sketchy link to a friend with the caption: "lol scamadviser already flagged it."</p>
     <div class="close-foot">
       <div>ScamAdviser · B2C Brand Exploration</div>
-      <div>V1 · May 2026 · Internal</div>
+      <div>V1 · May 2026 · Internal · <a href="motion-sound-lab.html" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Motion + Sound lab →</a></div>
     </div>
   </section>
 
@@ -4605,6 +4740,152 @@
 
   cycle();
 
+})();
+
+// =============================================================
+// Sonic palette — synthesized cues (tap · tick · safe · block)
+// =============================================================
+(function(){
+  let ctx = null, master = null;
+  let enabled = localStorage.getItem('sa-audio') === '1';
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) enabled = false;
+
+  function ensure(){
+    if (ctx) return ctx;
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    master = ctx.createGain();
+    master.gain.value = 0.55;
+    master.connect(ctx.destination);
+    return ctx;
+  }
+
+  let noiseBuf = null;
+  function noise(){
+    if (noiseBuf) return noiseBuf;
+    const sr = ctx.sampleRate;
+    noiseBuf = ctx.createBuffer(1, sr * 1, sr);
+    const d = noiseBuf.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * 0.7;
+    return noiseBuf;
+  }
+
+  function tone(opt){
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = opt.type || 'sine';
+    o.frequency.value = opt.freq;
+    if (opt.slideTo) o.frequency.exponentialRampToValueAtTime(opt.slideTo, ctx.currentTime + opt.dur);
+    g.gain.setValueAtTime(0, ctx.currentTime);
+    g.gain.linearRampToValueAtTime(opt.gain || 0.2, ctx.currentTime + (opt.attack || 0.005));
+    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + opt.dur);
+    o.connect(g); g.connect(master);
+    o.start(); o.stop(ctx.currentTime + opt.dur + 0.05);
+  }
+  function nburst(opt){
+    const src = ctx.createBufferSource(); src.buffer = noise();
+    const filt = ctx.createBiquadFilter();
+    filt.type = opt.type || 'lowpass'; filt.frequency.value = opt.freq; filt.Q.value = opt.q || 2;
+    if (opt.slideTo) filt.frequency.exponentialRampToValueAtTime(opt.slideTo, ctx.currentTime + opt.dur);
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0, ctx.currentTime);
+    g.gain.linearRampToValueAtTime(opt.gain || 0.18, ctx.currentTime + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + opt.dur);
+    src.connect(filt); filt.connect(g); g.connect(master);
+    src.start(); src.stop(ctx.currentTime + opt.dur + 0.05);
+  }
+
+  const cues = {
+    tap()  { ensure(); tone({freq:1200, dur:0.045, gain:0.16, attack:0.001}); },
+    tick() { ensure(); tone({freq:520, type:'triangle', dur:0.07, gain:0.18, slideTo:380}); },
+    safe() {
+      ensure();
+      tone({freq:523.25, dur:0.16, gain:0.20});
+      setTimeout(()=> tone({freq:659.25, dur:0.22, gain:0.20}), 90);
+    },
+    block(){
+      ensure();
+      tone({freq:220, dur:0.18, gain:0.30, slideTo:80});
+      nburst({freq:600, slideTo:120, q:1.5, dur:0.22, gain:0.16});
+    }
+  };
+
+  // Sticky toggle button
+  const toggle = document.createElement('button');
+  toggle.className = 'audio-toggle' + (enabled ? ' on' : '');
+  toggle.innerHTML = '<span class="ind"></span><span>' + (enabled ? 'Sound on' : 'Sound off') + '</span>';
+  toggle.setAttribute('aria-label', 'Toggle sonic palette');
+  toggle.addEventListener('click', () => {
+    enabled = !enabled;
+    localStorage.setItem('sa-audio', enabled ? '1' : '0');
+    toggle.classList.toggle('on', enabled);
+    toggle.querySelector('span:last-child').textContent = enabled ? 'Sound on' : 'Sound off';
+    if (enabled) cues.tap();
+  });
+  // Append once gate is dismissed
+  function attachToggle(){
+    if (!document.body.classList.contains('locked')) {
+      document.body.appendChild(toggle);
+    } else {
+      setTimeout(attachToggle, 400);
+    }
+  }
+  attachToggle();
+
+  // Sound block — explicit play buttons always play, regardless of toggle
+  document.querySelectorAll('[data-cue]').forEach(btn => {
+    btn.addEventListener('click', e => { e.preventDefault(); cues[btn.dataset.cue]?.(); });
+  });
+
+  // Global: any .sa-btn or .ext-btn press plays a tap when enabled
+  document.addEventListener('pointerdown', e => {
+    if (!enabled) return;
+    const t = e.target.closest('.sa-btn, .ext-btn');
+    if (!t) return;
+    // Specific cue overrides
+    if (t.dataset.cueOverride) { cues[t.dataset.cueOverride]?.(); return; }
+    if (t.classList.contains('danger')) { cues.block(); return; }
+    cues.tap();
+  });
+
+  // Tag specific buttons in the guideline with named cues
+  document.querySelectorAll('.ext-btn.primary').forEach(b => {
+    if (b.textContent.trim().toLowerCase().startsWith('back to safety')) b.dataset.cueOverride = 'block';
+  });
+
+  // ---- Toast demo
+  const dsToast = document.getElementById('dsToast');
+  const dsToastTrigger = document.getElementById('dsToastTrigger');
+  if (dsToastTrigger) {
+    dsToastTrigger.addEventListener('click', () => {
+      dsToast.classList.remove('show'); void dsToast.offsetWidth; dsToast.classList.add('show');
+      if (enabled) cues.tap();
+      setTimeout(() => dsToast.classList.remove('show'), 2800);
+    });
+  }
+
+  // ---- Counter bump motion + cue.tick
+  function bumpCounter(el){
+    el.classList.remove('counter-bump'); void el.offsetWidth; el.classList.add('counter-bump');
+    if (enabled) cues.tick();
+  }
+  const counterTargets = [
+    document.querySelector('.social-foot .counter'),
+    document.querySelector('.comm-header .stat strong'),
+  ].filter(Boolean);
+  // Wire toast block's "counter bump" button to demo
+  const dsCounter = document.getElementById('dsCounterTrigger');
+  if (dsCounter) {
+    dsCounter.addEventListener('click', () => {
+      counterTargets.forEach(el => {
+        const txt = el.textContent.replace(/[^\d.]/g, '');
+        const isStrong = el.tagName === 'STRONG';
+        const v = parseInt(txt.replace(/,/g, '')) || 0;
+        const nv = v + 1;
+        el.textContent = (isStrong ? '+' : '') + nv.toLocaleString();
+        bumpCounter(el);
+      });
+    });
+  }
 })();
 </script>
 
